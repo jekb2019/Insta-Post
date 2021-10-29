@@ -1,0 +1,27 @@
+.btn {
+  border: none;
+  width: 100px;
+  height: 50px;
+  border-radius: 15px;
+}
+
+/* Background Colors */
+.background_red {
+  background-color: #ea4444;
+}
+
+.background_green {
+  background-color: #37b752;
+}
+
+/* Text Colors */
+.white {
+  color: white;
+}
+
+/* Sizes */
+.small {
+  width: 90px;
+  height: 40px;
+  font-size: 18px;
+}
