@@ -1,0 +1,25 @@
+.container {
+  overflow: hidden;
+  border-radius: 50px;
+  border: 2px solid #cecece;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.small {
+  height: 30px;
+  width: 30px;
+}
+
+.medium {
+  height: 50px;
+  width: 50px;
+}
+
+.large {
+  height: 70px;
+  width: 70px;
+}
