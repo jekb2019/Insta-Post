@@ -4,8 +4,25 @@ import ProfileImg from './ProfileImg';
 export default {
   title: 'Shared/ProfileImg',
   component: ProfileImg,
+  args: {
+    borderColor: 'gray',
+  },
 };
 
-export const Small = () => <ProfileImg size="small" />;
-export const Medium = () => <ProfileImg size="medium" />;
-export const Large = () => <ProfileImg size="large" />;
+const Template = (args) => <ProfileImg {...args} />;
+
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'medium',
+  borderColor: 'red',
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+};
