@@ -3,6 +3,10 @@ import MiniProfile from './components/modules/MiniProfile/MiniProfile';
 import Auth from './pages/auth/Auth';
 import Home from './pages/home/Home';
 import User from './pages/user/User';
+import WithHeader from './pages/hoc/WithHeader';
+
+const HomeWithHeader = WithHeader(Home);
+const UserWithHeader = WithHeader(User);
 
 function App() {
   const loggedIn = false;
@@ -15,10 +19,10 @@ function App() {
           <MiniProfile username="jekb2019" location="Auckland" />
         </Route>
         <Route path="/user">
-          <User />
+          <UserWithHeader />
         </Route>
         <Route path="/home">
-          <Home />
+          <HomeWithHeader />
         </Route>
         <Route path="/login">
           <Auth />
