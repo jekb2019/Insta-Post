@@ -7,7 +7,7 @@ import Header from '../../components/modules/Header/Header';
 const WithHeader = (Page) => {
   return () => (
     <>
-      <Header />
+      <Header name="Jason Ko" />
       <Page />
     </>
   );
