@@ -4,7 +4,7 @@ import styles from './MiniProfile.module.css';
 
 const MiniProfile = ({ username, location }) => (
   <div className={styles.container}>
-    <ProfileImg size="small" borderColor="gray" />
+    <ProfileImg size="medium" borderColor="gray" />
     <div className={styles.descriptions}>
       <p className={styles.description}>{username}</p>
       {location && (
