@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+  border: 1px solid gray;
+  width: 500px;
+  height: 40px;
+  border-radius: 30px;
+  display: flex;
+  overflow: hidden;
+}
+
+.input {
+  width: 100%;
+  background-color: transparent;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  padding-left: 15px;
+  font-size: 18px;
+  border: none;
+}
+
+.btn {
+  margin: 3px;
+  width: 50px;
+  border-radius: 30px;
+  border: none;
+  background-color: gray;
+  color: white;
+  font-size: 18px;
+}
+
+.btn:active {
+  background-color: #666666;
+}
