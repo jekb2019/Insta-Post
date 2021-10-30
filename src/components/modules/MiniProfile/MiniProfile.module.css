@@ -1,6 +1,7 @@
 .container {
   display: inline-flex;
   align-items: center;
+  line-height: normal;
 }
 
 .descriptions {
