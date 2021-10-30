@@ -1,0 +1,20 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.descriptions {
+  margin-left: 10px;
+}
+
+.description {
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.location {
+  font-size: 12px;
+  margin-top: 3px;
+  color: gray;
+}
