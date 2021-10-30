@@ -3,7 +3,7 @@ import MiniProfile from '../MiniProfile/MiniProfile';
 import styles from './FriendList.module.css';
 
 const FriendList = (props) => (
-  <div className={styles.container}>
+  <aside className={styles.container}>
     <input
       className={styles.searchInput}
       type="text"
@@ -23,7 +23,7 @@ const FriendList = (props) => (
         <MiniProfile username="jekb2019" />
       </li>
     </ul>
-  </div>
+  </aside>
 );
 
 export default FriendList;
