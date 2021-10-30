@@ -2,7 +2,7 @@
   border: none;
   width: 100px;
   height: 50px;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 /* Background Colors */
@@ -21,7 +21,7 @@
 
 /* Sizes */
 .small {
-  width: 90px;
-  height: 40px;
-  font-size: 18px;
+  width: 60px;
+  height: 30px;
+  font-size: 14px;
 }
