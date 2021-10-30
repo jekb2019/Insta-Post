@@ -6,11 +6,13 @@ import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 
 const Header = ({ name }) => (
   <header className={styles.container}>
-    <img className={styles.logo} src={logo} alt="InstaPost logo" />
-    <SearchBar />
-    <div className={styles.user}>
-      <p className={styles.name}>{name}</p>
-      <ProfileImg borderColor="gray" size="medium" />
+    <div className={styles.inner_container}>
+      <img className={styles.logo} src={logo} alt="InstaPost logo" />
+      <SearchBar />
+      <div className={styles.user}>
+        <p className={styles.name}>{name}</p>
+        <ProfileImg borderColor="gray" size="medium" />
+      </div>
     </div>
   </header>
 );
