@@ -1,3 +1,6 @@
+@value makerGreen from '../../../styles/colors.css';
+@value makerOrange from '../../../styles/colors.css';
+
 .btn {
   border-radius: 50%;
   border: none;
@@ -32,11 +35,11 @@
 
 /* Colors */
 .orange {
-  background-color: #f79809;
+  background-color: makerOrange;
   color: white;
 }
 
 .green {
-  background-color: #37b752;
+  background-color: makerGreen;
   color: white;
 }

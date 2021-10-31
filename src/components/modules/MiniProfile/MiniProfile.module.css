@@ -1,3 +1,5 @@
+@value makerDarkGray from '../../../styles/colors.css';
+
 .container {
   display: inline-flex;
   align-items: center;
@@ -17,5 +19,5 @@
 .location {
   font-size: 12px;
   margin-top: 3px;
-  color: gray;
+  color: makerDarkGray;
 }

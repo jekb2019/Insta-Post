@@ -1,5 +1,8 @@
+@value makerGray from '../../../styles/colors.css';
+@value transBlack75 from '../../../styles/colors.css';
+
 .container {
-  border: 1px solid gray;
+  border: 1px solid makerGray;
   border-radius: 10px;
   width: 280px;
   padding: 15px 20px;
@@ -14,7 +17,7 @@
   font-size: 18px;
   padding-left: 15px;
   border-radius: 15px;
-  border: 1px solid gray;
+  border: 1px solid makerGray;
 }
 
 .list {
@@ -35,5 +38,5 @@
 }
 
 .list li:hover {
-  box-shadow: 4px 3px 11px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 3px 11px -5px transBlack75;
 }

@@ -1,14 +1,17 @@
+@value makerLightRed from '../../../styles/colors.css';
+@value makerGray from '../../../styles/colors.css';
+
 .container {
   overflow: hidden;
   border-radius: 50px;
 }
 
 .border_gray {
-  border: 2px solid #cecece;
+  border: 2px solid makerGray;
 }
 
 .border_red {
-  border: 2px solid #fc7676;
+  border: 2px solid makerLightRed;
 }
 
 .img {

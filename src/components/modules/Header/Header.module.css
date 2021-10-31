@@ -1,7 +1,10 @@
+@value makerLightGray from '../../../styles/colors.css';
+@value makerDarkGray from '../../../styles/colors.css';
+
 .container {
   height: 80px;
   width: 100%;
-  border: 1px solid #b7b7b7;
+  border: 1px solid makerLightGray;
 }
 .inner_container {
   height: 100%;
@@ -26,4 +29,5 @@
   font-size: 20px;
   margin-right: 10px;
   white-space: nowrap;
+  color: black;
 }

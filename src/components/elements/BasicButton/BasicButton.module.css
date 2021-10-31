@@ -1,3 +1,6 @@
+@value makerGreen from '../../../styles/colors.css';
+@value makerRed from '../../../styles/colors.css';
+
 .btn {
   border: none;
   width: 100px;
@@ -7,11 +10,11 @@
 
 /* Background Colors */
 .background_red {
-  background-color: #ea4444;
+  background-color: makerRed;
 }
 
 .background_green {
-  background-color: #37b752;
+  background-color: makerGreen;
 }
 
 /* Text Colors */

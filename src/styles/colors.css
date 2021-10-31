@@ -1,0 +1,12 @@
+@value makerGreen: #37B752;
+@value makerOrange: #F79809;
+
+@value makerLightRed: #FC7676;
+@value makerRed: #EA4444;
+
+@value makerLightGray: #DBDBDB;
+@value makerGray: #C7C7C7;
+@value makerDarkGray: #808080;
+
+/* Shadows */
+@value transBlack75: rgba(0, 0, 0, 0.75);

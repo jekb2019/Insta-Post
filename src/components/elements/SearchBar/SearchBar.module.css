@@ -1,6 +1,9 @@
+@value makerGray from '../../../styles/colors.css';
+@value makerDarkGray from '../../../styles/colors.css';
+
 .container {
   position: relative;
-  border: 1px solid gray;
+  border: 1px solid makerGray;
   width: 600px;
   height: 40px;
   border-radius: 30px;
@@ -23,11 +26,11 @@
   width: 50px;
   border-radius: 30px;
   border: none;
-  background-color: gray;
+  background-color: makerDarkGray;
   color: white;
   font-size: 18px;
 }
 
 .btn:active {
-  background-color: #666666;
+  background-color: makerGray;
 }

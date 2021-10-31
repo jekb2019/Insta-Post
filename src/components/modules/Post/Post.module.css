@@ -1,8 +1,11 @@
+@value makerGray from '../../../styles/colors.css';
+@value makerRed from '../../../styles/colors.css';
+
 .container {
   margin: 0px;
   padding: 0px;
   width: 600px;
-  border: 1px solid gray;
+  border: 1px solid makerGray;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -16,7 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid makerGray;
   height: 60px;
   padding: 0 15px;
 }
@@ -40,6 +43,7 @@
 
 .reaction_icon {
   font-size: 25px;
+  color: makerRed;
 }
 
 .description {
