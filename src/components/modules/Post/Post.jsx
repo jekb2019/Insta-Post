@@ -6,10 +6,14 @@ import styles from './Post.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 
-const Post = ({ isOwner }) => (
+const Post = ({ isOwner, authorUsername, location, image, profileImg }) => (
   <section className={styles.container}>
     <div className={styles.header}>
-      <MiniProfile username="jekb2019" location="Auckland" />
+      <MiniProfile
+        username={authorUsername}
+        location={location}
+        image={profileImg}
+      />
       {isOwner && (
         <div className={styles.buttons}>
           <BasicButton
@@ -18,20 +22,18 @@ const Post = ({ isOwner }) => (
             color="white"
             backgroundColor="green"
           />
-          <BasicButton
-            label="Delete"
-            size="small"
-            color="white"
-            backgroundColor="red"
-          />
+          <div className="ml-5">
+            <BasicButton
+              label="Delete"
+              size="small"
+              color="white"
+              backgroundColor="red"
+            />
+          </div>
         </div>
       )}
     </div>
-    <img
-      className={styles.img}
-      src="https://dummyimage.com/600x700/7a527a/579964"
-      alt="Post"
-    />
+    <img className={styles.img} src={image} alt="Post" />
     <div className={styles.footer}>
       <div className={styles.reactions}>
         <FontAwesomeIcon
