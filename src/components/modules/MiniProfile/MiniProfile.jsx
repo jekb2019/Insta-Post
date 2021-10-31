@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 import styles from './MiniProfile.module.css';
 
-const MiniProfile = ({ username, location }) => (
+const MiniProfile = ({ username, location, image }) => (
   <div className={styles.container}>
-    <ProfileImg size="medium" borderColor="gray" />
+    <ProfileImg size="medium" borderColor="gray" image={image} />
     <div className={styles.descriptions}>
       <p className={styles.description}>{username}</p>
       {location && (
@@ -13,5 +14,10 @@ const MiniProfile = ({ username, location }) => (
     </div>
   </div>
 );
+
+MiniProfile.propTypes = {
+  username: PropTypes.string,
+  image: PropTypes.string,
+};
 
 export default MiniProfile;

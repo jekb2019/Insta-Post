@@ -6,6 +6,7 @@ export default {
   component: MiniProfile,
   args: {
     username: 'jekb2019',
+    image: 'https://source.unsplash.com/WLUHO9A_xik/',
   },
 };
 
