@@ -34,8 +34,14 @@ const Post = ({ isOwner }) => (
     />
     <div className={styles.footer}>
       <div className={styles.reactions}>
-        <FontAwesomeIcon className={styles.reaction_icon} icon={faHeart} />
-        <FontAwesomeIcon className={styles.reaction_icon} icon={faComment} />
+        <FontAwesomeIcon
+          className={`${styles.reaction_icon} ${styles.like}`}
+          icon={faHeart}
+        />
+        <FontAwesomeIcon
+          className={`${styles.reaction_icon} ${styles.comment}`}
+          icon={faComment}
+        />
       </div>
       <p className={styles.description}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. In laboriosam
