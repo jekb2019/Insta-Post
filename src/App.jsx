@@ -3,7 +3,7 @@ import MiniProfile from './components/modules/MiniProfile/MiniProfile';
 import Auth from './pages/auth/Auth';
 import Home from './pages/home/Home';
 import User from './pages/user/User';
-import WithHeader from './pages/hoc/WithHeader';
+import WithHeader from './pages/hoc/WithHeader/WithHeader';
 
 const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
