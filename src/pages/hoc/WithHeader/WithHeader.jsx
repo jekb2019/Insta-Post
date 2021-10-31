@@ -7,7 +7,7 @@ import styles from './WithHeader.module.css';
  * WithHeader is an HOC where it injects Header into a Page
  */
 const WithHeader = (Page) => {
-  const { id, username, name, profileImg } = currentUser;
+  const { name, profileImg } = currentUser;
   return () => (
     <div className={styles.container}>
       <Header name={name} profileImg={profileImg} isSticky={true} />

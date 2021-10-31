@@ -4,7 +4,6 @@ import MiniProfile from '../MiniProfile/MiniProfile';
 import styles from './FriendList.module.css';
 
 const users = userList;
-console.log(users);
 
 const FriendList = (props) => (
   <aside className={styles.container}>
@@ -17,7 +16,7 @@ const FriendList = (props) => (
       {users.map((user) => {
         const { username, profileImg } = user;
         return (
-          <li>
+          <li key={user.id}>
             <MiniProfile username={username} image={profileImg} />
           </li>
         );
