@@ -2,7 +2,7 @@ import React from 'react';
 import BasicButton from './BasicButton';
 
 export default {
-  title: 'Shared/BasicButton',
+  title: 'Elements/BasicButton',
   component: BasicButton,
   args: {
     color: 'white',

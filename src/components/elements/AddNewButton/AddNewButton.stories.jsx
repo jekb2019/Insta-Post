@@ -2,7 +2,7 @@ import React from 'react';
 import AddNewButton from './AddNewButton';
 
 export default {
-  title: 'Element/AddNewButton',
+  title: 'Elements/AddNewButton',
   component: AddNewButton,
   args: {
     color: 'orange',

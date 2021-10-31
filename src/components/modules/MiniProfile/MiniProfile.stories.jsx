@@ -2,7 +2,7 @@ import React from 'react';
 import MiniProfile from './MiniProfile';
 
 export default {
-  title: 'Shared/MiniProfile',
+  title: 'Elements/MiniProfile',
   component: MiniProfile,
   args: {
     username: 'jekb2019',

@@ -2,7 +2,7 @@ import React from 'react';
 import ProfileImg from './ProfileImg';
 
 export default {
-  title: 'Shared/ProfileImg',
+  title: 'Elements/ProfileImg',
   component: ProfileImg,
   args: {
     borderColor: 'gray',

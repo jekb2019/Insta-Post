@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 
 export default {
-  title: 'Module/Header',
+  title: 'Modules/Header',
   component: Header,
   args: {
     name: 'Jason Ko',
