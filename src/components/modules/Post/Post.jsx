@@ -30,7 +30,7 @@ const Post = ({ isOwner }) => (
     <img
       className={styles.img}
       src="https://dummyimage.com/600x700/7a527a/579964"
-      alt="Post Image"
+      alt="Post"
     />
     <div className={styles.footer}>
       <div className={styles.reactions}>

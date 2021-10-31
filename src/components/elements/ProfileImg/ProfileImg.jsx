@@ -10,14 +10,14 @@ const ProfileImg = ({ size, borderColor }) => {
         styles[`border_${borderColor}`]
       }`}
     >
-      <img className={`${styles.img}`} src={testImg} />
+      <img className={`${styles.img}`} src={testImg} alt="User profile" />
     </div>
   );
 };
 
 ProfileImg.propTypes = {
-  size: PropTypes.oneOf(['small, medium, large']),
-  borderColor: PropTypes.oneOf(['gray, red']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  borderColor: PropTypes.oneOf(['gray', 'red']),
 };
 
 export default ProfileImg;

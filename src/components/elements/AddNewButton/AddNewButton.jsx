@@ -11,8 +11,8 @@ const AddNewButton = ({ size, color }) => (
 );
 
 AddNewButton.propTypes = {
-  size: PropTypes.oneOf(['small, medium, large']),
-  color: PropTypes.oneOf(['green, orange']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  color: PropTypes.oneOf(['green', 'orange']),
 };
 
 export default AddNewButton;

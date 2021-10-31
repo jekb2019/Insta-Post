@@ -9,7 +9,7 @@ const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
 function App() {
-  const loggedIn = false;
+  // const loggedIn = false;
   return (
     <BrowserRouter>
       <Switch>
