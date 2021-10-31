@@ -6,7 +6,14 @@ import styles from './Post.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 
-const Post = ({ isOwner, authorUsername, location, image, profileImg }) => (
+const Post = ({
+  isOwner,
+  authorUsername,
+  location,
+  image,
+  profileImg,
+  description,
+}) => (
   <section className={styles.container}>
     <div className={styles.header}>
       <MiniProfile
@@ -45,12 +52,7 @@ const Post = ({ isOwner, authorUsername, location, image, profileImg }) => (
           icon={faComment}
         />
       </div>
-      <p className={styles.description}>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. In laboriosam
-        sunt deleniti, dolore fugit harum voluptatum nisi iste velit culpa
-        repellendus tempore, ut tenetur assumenda. Aut mollitia quaerat
-        cupiditate exercitationem.
-      </p>
+      <p className={styles.description}>{description}</p>
     </div>
   </section>
 );

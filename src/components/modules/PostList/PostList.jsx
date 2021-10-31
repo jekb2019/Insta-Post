@@ -11,7 +11,7 @@ const PostList = ({ posts }) => {
   return (
     <ul>
       {posts.map((post) => {
-        const { authorUsername, location, image } = post;
+        const { authorUsername, location, image, description } = post;
         const isOwner = user.username === authorUsername;
         const author = users.find((user) => user.username === authorUsername);
         const profileImg = author.profileImg;
@@ -23,6 +23,7 @@ const PostList = ({ posts }) => {
               location={location}
               image={image}
               profileImg={profileImg}
+              description={description}
             />
           </li>
         );
