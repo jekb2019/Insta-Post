@@ -6,6 +6,7 @@ export default {
   component: ProfileImg,
   args: {
     borderColor: 'gray',
+    image: 'https://source.unsplash.com/WLUHO9A_xik/',
   },
 };
 

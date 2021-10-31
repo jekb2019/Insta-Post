@@ -1,16 +1,15 @@
 import React from 'react';
 import styles from './ProfileImg.module.css';
-import testImg from '../../../assets/images/mockProfile.jpg';
 import PropTypes from 'prop-types';
 
-const ProfileImg = ({ size, borderColor }) => {
+const ProfileImg = ({ size, borderColor, image }) => {
   return (
     <div
       className={`${styles.container} ${styles[size]} ${
         styles[`border_${borderColor}`]
       }`}
     >
-      <img className={`${styles.img}`} src={testImg} alt="User profile" />
+      <img className={`${styles.img}`} src={image} alt="User profile" />
     </div>
   );
 };
@@ -18,6 +17,7 @@ const ProfileImg = ({ size, borderColor }) => {
 ProfileImg.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   borderColor: PropTypes.oneOf(['gray', 'red']),
+  image: PropTypes.string,
 };
 
 export default ProfileImg;
