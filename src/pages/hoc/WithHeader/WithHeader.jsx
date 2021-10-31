@@ -8,7 +8,7 @@ import styles from './WithHeader.module.css';
 const WithHeader = (Page) => {
   return () => (
     <div className={styles.container}>
-      <Header name="Jason Ko" />
+      <Header name="Jason Ko" isSticky={true} />
       <Page />
     </div>
   );
