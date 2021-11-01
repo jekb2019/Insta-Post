@@ -1,0 +1,6 @@
+.container {
+  border: 1px solid black;
+  display: inline-flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
