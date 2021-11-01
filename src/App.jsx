@@ -16,7 +16,6 @@ function App() {
         <Route exact path="/">
           {/* {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />} */}
           <h1>Implement redirection depending on Auth status</h1>
-          <MiniProfile username="jekb2019" location="Auckland" />
         </Route>
         <Route path="/user">
           <UserWithHeader />

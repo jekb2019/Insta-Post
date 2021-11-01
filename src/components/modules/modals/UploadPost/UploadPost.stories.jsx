@@ -3,7 +3,7 @@ import UploadPost from './UploadPost';
 
 export default {
   title: 'Modules/UploadPost',
-  component: EditPost,
+  component: UploadPost,
   args: {},
 };
 
