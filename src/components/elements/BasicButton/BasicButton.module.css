@@ -1,5 +1,6 @@
 @value makerGreen from '../../../styles/colors.css';
 @value makerRed from '../../../styles/colors.css';
+@value makerOrange from '../../../styles/colors.css';
 
 .btn {
   border: none;
@@ -16,6 +17,10 @@
 
 .background_green {
   background-color: makerGreen;
+}
+
+.background_orange {
+  background-color: makerOrange;
 }
 
 /* Text Colors */

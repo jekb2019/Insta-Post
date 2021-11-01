@@ -22,7 +22,7 @@ BasicButton.propTyles = {
   size: PropTypes.oneOf(['small']),
   label: PropTypes.string,
   onClick: PropTypes.func,
-  backgroundColor: PropTypes.oneOf(['red, green']),
+  backgroundColor: PropTypes.oneOf(['red', 'green', 'orange']),
   color: PropTypes.oneOf(['white']),
 };
 
