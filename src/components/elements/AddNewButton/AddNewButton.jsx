@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const AddNewButton = ({ size, color }) => (
-  <button className={`${styles.btn} ${styles[size]} ${styles[color]}`}>
+const AddNewButton = ({ size, color, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`${styles.btn} ${styles[size]} ${styles[color]}`}
+  >
     <FontAwesomeIcon icon={faPlus} />
   </button>
 );

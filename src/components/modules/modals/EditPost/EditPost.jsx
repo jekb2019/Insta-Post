@@ -4,7 +4,7 @@ import BasicButton from '../../../elements/BasicButton/BasicButton';
 import MiniProfile from '../../MiniProfile/MiniProfile';
 import styles from './EditPost.module.css';
 
-const { username, profileImg } = currentUser;
+const { username, profileImg, onSave, onCancel } = currentUser;
 
 const EditPost = (props) => (
   <div className={styles.container}>
@@ -40,6 +40,7 @@ const EditPost = (props) => (
         color="white"
         backgroundColor="green"
         size="medium"
+        onClick={onSave}
       />
       <div className="ml-5">
         <BasicButton
@@ -47,6 +48,7 @@ const EditPost = (props) => (
           color="white"
           backgroundColor="red"
           size="medium"
+          onClick={onCancel}
         />
       </div>
     </div>
