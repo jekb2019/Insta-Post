@@ -1,5 +1,4 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import MiniProfile from './components/modules/MiniProfile/MiniProfile';
 import Auth from './pages/auth/Auth';
 import Home from './pages/home/Home';
 import User from './pages/user/User';

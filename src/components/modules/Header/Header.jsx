@@ -51,13 +51,13 @@ const Header = ({ name, profileImg, isSticky }) => {
         <div className={styles.user} onClick={toggleNav}>
           <p className={styles.name}>{name}</p>
           <ProfileImg borderColor="gray" size="medium" image={profileImg} />
+          {isNavOpen && (
+            <div className={styles.nav_container}>
+              <ProfileNav itemConfigs={navItemConfigs} />
+            </div>
+          )}
         </div>
       </div>
-      {isNavOpen && (
-        <div className={styles.nav_container}>
-          <ProfileNav itemConfigs={navItemConfigs} />
-        </div>
-      )}
     </header>
   );
 };
