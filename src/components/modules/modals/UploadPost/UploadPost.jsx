@@ -2,11 +2,12 @@ import React from 'react';
 import currentUser from '../../../../mock/user';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
 import MiniProfile from '../../MiniProfile/MiniProfile';
-import styles from './EditPost.module.css';
+import styles from './UploadPost.module.css';
+import placeholderImg from '../../../../assets/images/placeholder.png';
 
 const { username, profileImg, onSave, onCancel } = currentUser;
 
-const EditPost = (props) => (
+const UploadPost = ({ type, prevPostInfo }) => (
   <div className={styles.container}>
     <div className={styles.upper}>
       <div className={styles.left}>
@@ -27,11 +28,7 @@ const EditPost = (props) => (
         <input className={styles.location_input} type="text" />
       </div>
       <div className={styles.right}>
-        <img
-          className={styles.post_img}
-          src="https://source.unsplash.com/WLUHO9A_xik/1600x900"
-          alt="test"
-        />
+        <img className={styles.post_img} src={placeholderImg} alt="test" />
       </div>
     </div>
     <div className={styles.lower}>
@@ -55,4 +52,4 @@ const EditPost = (props) => (
   </div>
 );
 
-export default EditPost;
+export default UploadPost;

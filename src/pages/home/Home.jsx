@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddNewButton from '../../components/elements/AddNewButton/AddNewButton';
 import FriendList from '../../components/modules/FriendList/FriendList';
-import EditPost from '../../components/modules/modals/EditPost/EditPost';
+import UploadPost from '../../components/modules/modals/UploadPost/UploadPost';
 import PostList from '../../components/modules/PostList/PostList';
 import WithModal from '../../hoc/WithModal/WithModal';
 import posts from '../../mock/posts';
@@ -9,10 +9,10 @@ import styles from './Home.module.css';
 
 const postList = posts;
 
-const EditPostModal = WithModal(EditPost);
+const UploadPostModal = WithModal(UploadPost);
 
 const Home = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const toggleModal = (isOpen) => {
     setIsModalOpen(isOpen);
@@ -33,7 +33,7 @@ const Home = (props) => {
           onClick={() => toggleModal(true)}
         />
       </div>
-      {isModalOpen && <EditPostModal />}
+      {isModalOpen && <UploadPostModal />}
     </div>
   );
 };

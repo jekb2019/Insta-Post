@@ -1,11 +1,11 @@
 import React from 'react';
-import EditPost from './EditPost';
+import UploadPost from './UploadPost';
 
 export default {
-  title: 'Modules/EditPost',
+  title: 'Modules/UploadPost',
   component: EditPost,
   args: {},
 };
 
-const Template = (args) => <EditPost {...args} />;
+const Template = (args) => <UploadPost {...args} />;
 export const Primary = Template.bind({});
