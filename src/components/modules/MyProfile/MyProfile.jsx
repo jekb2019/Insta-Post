@@ -21,7 +21,7 @@ const MyProfile = ({ username, name, description, image }) => (
         <input
           type="text"
           className={styles.basic_input}
-          placeholder="Usernamae"
+          placeholder={`${username}`}
         />
       </div>
     </div>

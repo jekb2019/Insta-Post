@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/">
           {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/user">
+        <Route path="/user/:username">
           <UserWithHeader />
         </Route>
         <Route path="/home">

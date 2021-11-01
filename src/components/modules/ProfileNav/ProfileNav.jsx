@@ -8,7 +8,7 @@ const ProfileNav = ({ itemConfigs }) => (
     <ul>
       {itemConfigs.map((config) => {
         const { label, onClick } = config;
-        return <ProfileNavItem label={label} onClick={onClick} />;
+        return <ProfileNavItem key={label} label={label} onClick={onClick} />;
       })}
     </ul>
   </nav>
