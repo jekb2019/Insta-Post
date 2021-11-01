@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import MiniProfile from './components/modules/MiniProfile/MiniProfile';
 import Auth from './pages/auth/Auth';
 import Home from './pages/home/Home';
@@ -9,13 +9,12 @@ const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
 function App() {
-  // const loggedIn = false;
+  const loggedIn = true;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          {/* {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />} */}
-          <h1>Implement redirection depending on Auth status</h1>
+          {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
         </Route>
         <Route path="/user">
           <UserWithHeader />

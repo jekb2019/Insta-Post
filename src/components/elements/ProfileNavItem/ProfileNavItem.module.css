@@ -1,0 +1,18 @@
+@value makerLightGray from '../../../styles/colors.css';
+
+.item {
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item:hover {
+  background-color: makerLightGray;
+}
+
+.label {
+  font-size: 18px;
+}

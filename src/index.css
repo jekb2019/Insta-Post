@@ -5,6 +5,7 @@
   font-family: sans-serif;
 }
 
-ul {
+ul,
+li {
   list-style: none;
 }
