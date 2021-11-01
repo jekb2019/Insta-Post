@@ -13,9 +13,6 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
-        </Route>
         <Route path="/user/:username">
           <UserWithHeader />
         </Route>
@@ -24,6 +21,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Auth />
+        </Route>
+        <Route path="/">
+          {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
         </Route>
       </Switch>
     </BrowserRouter>
