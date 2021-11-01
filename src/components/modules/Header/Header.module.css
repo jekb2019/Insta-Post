@@ -8,6 +8,7 @@
   top: 0;
   background-color: white;
   z-index: 1;
+  position: relative;
 }
 
 .sticky {
@@ -31,6 +32,7 @@
 .user {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .name {
@@ -38,4 +40,10 @@
   margin-right: 10px;
   white-space: nowrap;
   color: black;
+}
+
+.nav_container {
+  position: absolute;
+  top: 65px;
+  right: 130px;
 }
