@@ -1,6 +1,6 @@
 import React from 'react';
 import currentUser from '../../../mock/user';
-import userList from '../../../mock/userList';
+import userList from '../../../mock/userList.js';
 import Post from '../Post/Post';
 import styles from './PostList.module.css';
 
