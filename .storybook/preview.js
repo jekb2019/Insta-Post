@@ -1,4 +1,5 @@
 import '../src/index.css';
+import Providers from '../src/providers/Providers';
 import '../src/styles/helpers.css';
 
 export const parameters = {
@@ -13,8 +14,8 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <div>
+    <Providers>
       <Story />
-    </div>
+    </Providers>
   ),
 ];
