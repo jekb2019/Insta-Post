@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import userList from '../../../mock/userList';
+import userList from '../../../mock/userList.js';
 import MiniProfile from '../MiniProfile/MiniProfile';
 import styles from './FriendList.module.css';
 
