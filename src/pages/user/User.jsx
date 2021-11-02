@@ -10,9 +10,9 @@ const myPosts = posts.filter(
   (post) => post.authorUsername === currentUser.username
 );
 
-const User = (props) => {
-  const { username } = useParams();
-  console.log(username);
+const User = ({ isOwner }) => {
+  const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
+
   return (
     <div className={styles.container}>
       <div className={styles.content_wrapper}>

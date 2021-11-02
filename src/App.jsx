@@ -3,20 +3,23 @@ import Auth from './pages/auth/Auth';
 import Home from './pages/home/Home';
 import User from './pages/user/User';
 import WithHeader from './pages/hoc/WithHeader/WithHeader';
+import React, { useContext } from 'react';
+import { CurrentUserContext } from './contexts/Auth/AuthContext';
 
 const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
 function App() {
   const loggedIn = true;
+  const [currentUser] = useContext(CurrentUserContext);
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/user/:username">
-          <UserWithHeader />
+          <UserWithHeader currentUser={currentUser} />
         </Route>
         <Route path="/home">
-          <HomeWithHeader />
+          <HomeWithHeader currentUser={currentUser} />
         </Route>
         <Route path="/login">
           <Auth />
