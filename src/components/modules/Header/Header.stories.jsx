@@ -6,6 +6,8 @@ export default {
   component: Header,
   args: {
     name: 'Jason Ko',
+    username: 'jekb_2019',
+    profileImg: 'https://source.unsplash.com/WLUHO9A_xik/',
   },
 };
 

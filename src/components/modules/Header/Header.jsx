@@ -6,11 +6,8 @@ import SearchBar from '../../elements/SearchBar/SearchBar';
 import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import { useHistory } from 'react-router';
-import currentUser from '../../../mock/user';
 
-const { username } = currentUser;
-
-const Header = ({ name, profileImg, isSticky }) => {
+const Header = ({ name, username, profileImg, isSticky }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
@@ -35,7 +32,7 @@ const Header = ({ name, profileImg, isSticky }) => {
         onClick: () => history.push('/login'),
       },
     ],
-    []
+    [history]
   );
 
   return (
@@ -63,7 +60,9 @@ const Header = ({ name, profileImg, isSticky }) => {
 };
 
 Header.propTypes = {
+  username: PropTypes.string,
   name: PropTypes.string,
+  profileImg: PropTypes.string,
   isSticky: PropTypes.bool,
 };
 
