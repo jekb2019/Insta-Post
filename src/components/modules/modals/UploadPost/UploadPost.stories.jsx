@@ -4,7 +4,6 @@ import UploadPost from './UploadPost';
 export default {
   title: 'Modules/UploadPost',
   component: UploadPost,
-  args: {},
 };
 
 const Template = (args) => <UploadPost {...args} />;

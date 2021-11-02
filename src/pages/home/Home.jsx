@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import AddNewButton from '../../components/elements/AddNewButton/AddNewButton';
 import FriendList from '../../components/modules/FriendList/FriendList';
-import UploadPost from '../../components/modules/modals/UploadPost/UploadPost';
 import PostList from '../../components/modules/PostList/PostList';
-import WithModal from '../../hoc/WithModal/WithModal';
+import {
+  ACTIONS,
+  UploadPostModalContext,
+} from '../../contexts/Modal/ModalContext';
 import posts from '../../mock/posts';
 import styles from './Home.module.css';
 
 const postList = posts;
 
-const UploadPostModal = WithModal(UploadPost);
-
 const Home = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useContext(UploadPostModalContext)[1];
 
-  const toggleModal = (isOpen) => {
-    setIsModalOpen(isOpen);
+  const handleCreateBtn = () => {
+    dispatch({ type: ACTIONS.OPEN_CREATE_MODAL });
   };
 
   return (
@@ -27,13 +27,8 @@ const Home = (props) => {
         <FriendList />
       </aside>
       <div className={styles.add_new_btn_container}>
-        <AddNewButton
-          color="orange"
-          size="large"
-          onClick={() => toggleModal(true)}
-        />
+        <AddNewButton color="orange" size="large" onClick={handleCreateBtn} />
       </div>
-      {isModalOpen && <UploadPostModal />}
     </div>
   );
 };
