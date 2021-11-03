@@ -1,4 +1,4 @@
-const userList = [
+export const userList = [
   {
     id: 'u1',
     username: 'jekb_2019',
@@ -42,5 +42,3 @@ const userList = [
     description: 'Live long and prosper.',
   },
 ];
-
-export default userList;
