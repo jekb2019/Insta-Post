@@ -9,6 +9,16 @@ import WithModal from './hoc/WithModal/WithModal';
 import UploadPost from './components/modules/modals/UploadPost/UploadPost';
 import { UploadPostModalContext } from './contexts/Modal/ModalContext';
 
+/**
+ * Amplify Auth
+ */
+import Amplify from '@aws-amplify/core';
+import config from './aws-exports';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+Amplify.configure(config);
+/**
+ *
+ */
 const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
@@ -42,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
