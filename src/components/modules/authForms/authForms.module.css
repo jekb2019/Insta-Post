@@ -1,0 +1,67 @@
+@value makerDarkGray from '../../../styles/colors.css';
+@value makerGray from '../../../styles/colors.css';
+
+.form {
+  border: 1px solid makerGray;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  padding: 40px;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.title {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.description {
+  font-size: 18px;
+  color: makerDarkGray;
+}
+
+.signup_link {
+  color: tomato;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.fields_wrapper {
+  margin: 30px 0 50px 0;
+}
+
+.input_group {
+  margin-top: 20px;
+  width: 400px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.input_label {
+  font-size: 18px;
+  margin-right: 10px;
+  color: makerDarkGray;
+}
+
+.input {
+  height: 30px;
+  width: 300px;
+  border: 1px solid makerGray;
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.password_forgot {
+  font-size: 14px;
+  color: makerDarkGray;
+  margin-bottom: 20px;
+}
+
+.reset_link {
+  color: tomato;
+  cursor: pointer;
+}
