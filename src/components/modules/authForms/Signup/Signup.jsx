@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../authForms.module.css';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
+import { AuthFormTypes } from '../AuthForm';
 
 const Signup = ({
   username,
@@ -9,11 +10,18 @@ const Signup = ({
   setPassword,
   email,
   setEmail,
+  switchForm,
 }) => (
   <>
     <h2 className={styles.title}>Create a new account</h2>
     <p className={styles.description}>
-      <span className={styles.signup_link}>Log in</span> with existing account
+      <span
+        className={styles.signup_link}
+        onClick={() => switchForm(AuthFormTypes.SIGNIN)}
+      >
+        Log in
+      </span>{' '}
+      with existing account
     </p>
     <div className={styles.fields_wrapper}>
       <div className={styles.input_group}>

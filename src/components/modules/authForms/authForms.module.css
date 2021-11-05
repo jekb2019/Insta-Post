@@ -64,4 +64,5 @@
 .reset_link {
   color: tomato;
   cursor: pointer;
+  text-decoration: underline;
 }

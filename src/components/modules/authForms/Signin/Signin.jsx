@@ -1,13 +1,26 @@
 import React from 'react';
 import styles from '../authForms.module.css';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
+import { AuthFormTypes } from '../AuthForm';
 
-const Signin = ({ username, setUsername, password, setPassword }) => (
+const Signin = ({
+  username,
+  setUsername,
+  password,
+  setPassword,
+  switchForm,
+  resetPassword,
+}) => (
   <>
     <h2 className={styles.title}>Sign in to continue</h2>
     <p className={styles.description}>
       New to InstaPost?{' '}
-      <span className={styles.signup_link}>Click here to sign up</span>
+      <span
+        className={styles.signup_link}
+        onClick={() => switchForm(AuthFormTypes.SIGNUP)}
+      >
+        Click here to sign up
+      </span>
     </p>
     <div className={styles.fields_wrapper}>
       <div className={styles.input_group}>
@@ -37,7 +50,10 @@ const Signin = ({ username, setUsername, password, setPassword }) => (
     </div>
     <p className={styles.password_forgot}>
       Forgot your password?{' '}
-      <span className={styles.reset_link}>Click here to reset</span>.
+      <span className={styles.reset_link} onClick={resetPassword}>
+        Click here to reset
+      </span>
+      .
     </p>
     <BasicButton
       color="white"

@@ -15,6 +15,7 @@ import { UploadPostModalContext } from './contexts/Modal/ModalContext';
 import Amplify from '@aws-amplify/core';
 import config from './aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import { AuthFormTypes } from './components/modules/authForms/AuthForm';
 Amplify.configure(config);
 /**
  *
@@ -23,6 +24,8 @@ const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
 const UploadPostModal = WithModal(UploadPost);
+
+const AuthTest = withAuthenticator(Auth);
 
 function App() {
   const loggedIn = true;
@@ -40,11 +43,17 @@ function App() {
           <Route path="/home">
             <HomeWithHeader currentUser={currentUser} />
           </Route>
-          <Route path="/login">
-            <Auth />
+          <Route path="/signin">
+            <Auth type={AuthFormTypes.SIGNIN} />
+          </Route>
+          <Route path="/signup">
+            <Auth type={AuthFormTypes.SIGNUP} />
+          </Route>
+          <Route path="/confirmation">
+            <Auth type={AuthFormTypes.CONFIRM_SIGNUP} />
           </Route>
           <Route path="/">
-            {loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
+            {loggedIn ? <Redirect to="/home" /> : <Redirect to="/auth" />}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -52,4 +61,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default App;
