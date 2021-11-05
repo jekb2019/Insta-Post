@@ -16,6 +16,9 @@ import Amplify from '@aws-amplify/core';
 import config from './aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { AuthFormTypes } from './components/modules/authForms/AuthForm';
+import PublicRoute from './router/PublicRoute';
+import { isLoggedIn } from './utils/helper';
+import PrivateRoute from './router/PrivateRoute';
 Amplify.configure(config);
 /**
  *
@@ -28,32 +31,40 @@ const UploadPostModal = WithModal(UploadPost);
 const AuthTest = withAuthenticator(Auth);
 
 function App() {
-  const loggedIn = true;
+  const loggedIn = isLoggedIn();
   const [currentUser] = useContext(CurrentUserContext);
   const [modalState] = useContext(UploadPostModalContext);
 
   return (
     <>
-      {modalState.isOpen && <UploadPostModal />}
       <BrowserRouter>
+        {modalState.isOpen && <UploadPostModal />}
         <Switch>
-          <Route path="/user/:username">
-            <UserWithHeader currentUser={currentUser} />
-          </Route>
-          <Route path="/home">
-            <HomeWithHeader currentUser={currentUser} />
-          </Route>
-          <Route path="/signin">
-            <Auth type={AuthFormTypes.SIGNIN} />
-          </Route>
-          <Route path="/signup">
-            <Auth type={AuthFormTypes.SIGNUP} />
-          </Route>
-          <Route path="/confirmation">
-            <Auth type={AuthFormTypes.CONFIRM_SIGNUP} />
-          </Route>
+          <PrivateRoute
+            component={<UserWithHeader currentUser={currentUser} />}
+            path="/user/:username"
+          />
+          <PrivateRoute
+            component={<HomeWithHeader currentUser={currentUser} />}
+            path="/home"
+          />
+          <PublicRoute
+            restricted={true}
+            component={<Auth type={AuthFormTypes.SIGNIN} />}
+            path="/signin"
+          />
+          <PublicRoute
+            restricted={true}
+            component={<Auth type={AuthFormTypes.SIGNUP} />}
+            path="/signup"
+          />
+          <PublicRoute
+            restricted={true}
+            component={<Auth type={AuthFormTypes.CONFIRM_SIGNUP} />}
+            path="/confirmation"
+          />
           <Route path="/">
-            {loggedIn ? <Redirect to="/home" /> : <Redirect to="/auth" />}
+            {loggedIn ? <Redirect to="/home" /> : <Redirect to="/signin" />}
           </Route>
         </Switch>
       </BrowserRouter>
