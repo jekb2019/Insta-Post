@@ -14,10 +14,8 @@ import { UploadPostModalContext } from './contexts/Modal/ModalContext';
  */
 import Amplify from '@aws-amplify/core';
 import config from './aws-exports';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import { AuthFormTypes } from './components/modules/authForms/AuthForm';
 import PublicRoute from './router/PublicRoute';
-import { isLoggedIn } from './utils/helper';
 import PrivateRoute from './router/PrivateRoute';
 Amplify.configure(config);
 /**
@@ -28,43 +26,45 @@ const UserWithHeader = WithHeader(User);
 
 const UploadPostModal = WithModal(UploadPost);
 
-const AuthTest = withAuthenticator(Auth);
-
 function App() {
-  const loggedIn = isLoggedIn();
   const [currentUser] = useContext(CurrentUserContext);
   const [modalState] = useContext(UploadPostModalContext);
-
+  console.log('Current User Context: ', currentUser);
   return (
     <>
       <BrowserRouter>
-        {modalState.isOpen && <UploadPostModal />}
+        {/* {modalState.isOpen && <UploadPostModal />} */}
         <Switch>
           <PrivateRoute
             component={<UserWithHeader currentUser={currentUser} />}
             path="/user/:username"
+            isLoggedIn={currentUser ? true : false}
           />
           <PrivateRoute
             component={<HomeWithHeader currentUser={currentUser} />}
             path="/home"
+            isLoggedIn={currentUser ? true : false}
           />
           <PublicRoute
-            restricted={true}
+            restricted={true} // change back to true later
             component={<Auth type={AuthFormTypes.SIGNIN} />}
             path="/signin"
+            isLoggedIn={currentUser ? true : false}
           />
           <PublicRoute
-            restricted={true}
+            restricted={true} // change back to true later
             component={<Auth type={AuthFormTypes.SIGNUP} />}
             path="/signup"
+            isLoggedIn={currentUser ? true : false}
           />
           <PublicRoute
-            restricted={true}
+            restricted={true} // change back to true later
             component={<Auth type={AuthFormTypes.CONFIRM_SIGNUP} />}
             path="/confirmation"
+            isLoggedIn={currentUser ? true : false}
           />
           <Route path="/">
-            {loggedIn ? <Redirect to="/home" /> : <Redirect to="/signin" />}
+            {currentUser ? <Redirect to="/home" /> : <Redirect to="/signin" />}
           </Route>
         </Switch>
       </BrowserRouter>

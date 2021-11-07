@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Auth.module.css';
 import logo from '../../assets/images/header_logo.png';
-import AuthForm, {
-  AuthFormTypes,
-} from '../../components/modules/authForms/AuthForm';
+import AuthForm from '../../components/modules/authForms/AuthForm';
 
 const Auth = ({ type }) => {
   return (

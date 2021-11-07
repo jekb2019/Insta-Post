@@ -5,6 +5,7 @@ import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { signIn } from '../../../services/auth';
 
 export const AuthFormTypes = {
   SIGNUP: 'signup',
@@ -38,11 +39,14 @@ const AuthForm = ({ type }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log('handle submit');
     e.preventDefault();
     switch (type) {
       case AuthFormTypes.SIGNIN:
-        alert('Submit from signin');
+        console.log('Case: Signin');
+        const user = await signIn(username, password);
+        console.log(user);
         return;
       case AuthFormTypes.SIGNUP:
         history.push('/confirmation');

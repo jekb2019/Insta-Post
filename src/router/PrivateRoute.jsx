@@ -2,13 +2,13 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import { isLoggedIn } from '../utils/helper';
 
-const loggedIn = isLoggedIn();
+// const loggedIn = isLoggedIn();
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={() => (loggedIn ? Component : <Redirect to="/signin" />)}
+      render={() => (isLoggedIn ? Component : <Redirect to="/signin" />)}
     />
   );
 };
