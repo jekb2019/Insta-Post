@@ -3,7 +3,7 @@ import styles from '../authForms.module.css';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
 import { AuthFormTypes } from '../AuthForm';
 
-const ConfirmSignup = ({ code, setCode, switchForm }) => (
+const ConfirmSignup = ({ code, setCode, switchForm, resendCode }) => (
   <>
     <h2 className={styles.title}>Enter Confirmation Code</h2>
     <p className={styles.description}>
@@ -35,6 +35,9 @@ const ConfirmSignup = ({ code, setCode, switchForm }) => (
       label="Go"
       size="medium"
     />
+    <span className={styles.resend_link} onClick={resendCode}>
+      Resend confirmation code
+    </span>
   </>
 );
 

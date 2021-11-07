@@ -5,7 +5,12 @@ import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { signIn } from '../../../services/auth';
+import {
+  confirmSignUp,
+  resendConfirmationCode,
+  signIn,
+  signUp,
+} from '../../../services/auth';
 
 export const AuthFormTypes = {
   SIGNUP: 'signup',
@@ -46,17 +51,36 @@ const AuthForm = ({ type }) => {
       case AuthFormTypes.SIGNIN:
         console.log('Case: Signin');
         const user = await signIn(username, password);
-        console.log(user);
+        // console.log(user);
         return;
       case AuthFormTypes.SIGNUP:
-        history.push('/confirmation');
+        let newUser;
+        try {
+          newUser = await signUp(username, password, email);
+          console.log(newUser);
+          history.push('/confirmation');
+        } catch (err) {
+          console.error(err);
+        }
         return;
       case AuthFormTypes.CONFIRM_SIGNUP:
-        alert('Submit from confirmation');
+        let confirmation;
+        try {
+          confirmation = await confirmSignUp(username, code);
+        } catch (e) {
+          alert('Invalid code');
+        }
+        console.log(confirmation);
+        history.push('/signin');
+
         return;
       default:
         return null;
     }
+  };
+
+  const resendCode = async () => {
+    await resendConfirmationCode(username);
   };
 
   const resetPassword = () => {
@@ -87,7 +111,12 @@ const AuthForm = ({ type }) => {
         />
       )}
       {type === 'confirm-signup' && (
-        <ConfirmSignup code={code} setCode={setCode} switchForm={switchForm} />
+        <ConfirmSignup
+          code={code}
+          setCode={setCode}
+          switchForm={switchForm}
+          resendCode={resendCode}
+        />
       )}
     </form>
   );

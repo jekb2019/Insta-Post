@@ -6,6 +6,7 @@ import SearchBar from '../../elements/SearchBar/SearchBar';
 import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import { useHistory } from 'react-router';
+import { signOut } from '../../../services/auth';
 
 const Header = ({ name, username, profileImg, isSticky }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -29,7 +30,9 @@ const Header = ({ name, username, profileImg, isSticky }) => {
       },
       {
         label: 'Log out',
-        onClick: () => history.push('/login'),
+        onClick: () => {
+          signOut();
+        },
       },
     ],
     [history]

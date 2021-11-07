@@ -66,3 +66,11 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.resend_link {
+  color: red;
+  margin-top: 10px;
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+}

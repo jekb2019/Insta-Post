@@ -5,7 +5,7 @@
  *  - Getting current logged in user data
  */
 
-import { Auth, Hub } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 /**
  * SIGN UP TO Service
@@ -24,7 +24,7 @@ export async function signUp(username, password, email) {
     });
     console.log(user);
   } catch (err) {
-    console.log('error signing up: ', err);
+    throw new Error('error signing up: ', err);
   }
 }
 
@@ -37,7 +37,23 @@ export async function confirmSignUp(username, code) {
   try {
     await Auth.confirmSignUp(username, code);
   } catch (err) {
-    console.log('error confirming sign up: ', err);
+    console.error(err);
+  }
+}
+
+/**
+ * Re-send confirmation code
+ * @param {*} username
+ * @param {*} password
+ * @returns
+ */
+
+export async function resendConfirmationCode(username) {
+  try {
+    await Auth.resendSignUp(username);
+    console.log('code resent successfully');
+  } catch (err) {
+    console.log('error resending code: ', err);
   }
 }
 
@@ -53,7 +69,7 @@ export async function signIn(username, password) {
     const user = await Auth.signIn(username, password);
     return user;
   } catch (err) {
-    console.log('error signing in', err);
+    return new Error('Error signing in: ', err);
   }
 }
 

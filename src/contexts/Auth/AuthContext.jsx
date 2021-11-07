@@ -1,40 +1,52 @@
-import React, { createContext, useReducer } from 'react';
+import { Hub } from 'aws-amplify';
+import React, { createContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-// import currentUser from '../../mock/user';
-import { getCurrentAuthUser, signOut } from '../../services/auth';
+import { getCurrentAuthUser } from '../../services/auth';
 
 export const CurrentUserContext = createContext(null);
 
-// const user = currentUser;
-
-// export const ACTIONS = {
-//   UPDATE_USERNAME: 'update-username',
-//   UPDATE_NAME: 'update-name',
-//   UPDATE_PROFILE_IMG: 'update-profile-img',
-// };
-
-// function reducer(currentUser, action) {
-//   switch (action.type) {
-//     case ACTIONS.UPDATE_USERNAME:
-//       return currentUser;
-//     case ACTIONS.UPDATE_NAME:
-//       return currentUser;
-//     case ACTIONS.UPDATE_PROFILE_IMG:
-//       return currentUser;
-//     default:
-//       throw new Error('Auth Context: Unsupported action');
-//   }
-// }
-
 const AuthContext = ({ children }) => {
-  // const [currentUser, dispatch] = useReducer(reducer, user);
-  // console.log('Current: ', currentUser);
   const [currentUser, setCurrentUser] = useState(null);
 
+  const listener = (data) => {
+    switch (data.payload.event) {
+      case 'signIn':
+        getCurrentAuthUserInfo().then((currentUser) => {
+          setCurrentUser(currentUser);
+        });
+        break;
+      case 'signUp':
+        break;
+      case 'signOut':
+        setCurrentUser(null);
+        break;
+      case 'signIn_failure':
+        alert('Signin Failed');
+        break;
+      case 'tokenRefresh':
+        console.log('token refresh succeeded');
+        break;
+      case 'tokenRefresh_failure':
+        console.error('token refresh failed');
+        break;
+      case 'configured':
+        console.log('the Auth module is configured');
+    }
+  };
   useEffect(() => {
-    getCurrentAuthUserInfo().then(setCurrentUser);
+    Hub.listen('auth', listener);
   }, []);
+
+  useEffect(() => {
+    getCurrentAuthUserInfo().then((user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log('User Changed: ', currentUser);
+  }, [currentUser]);
 
   /**
    * Get current logged in user from Amplify Auth.
@@ -44,7 +56,6 @@ const AuthContext = ({ children }) => {
    */
   async function getCurrentAuthUserInfo() {
     const user = getCurrentAuthUser().then((user) => {
-      // console.log('full user: ', user);
       if (!user) {
         return null;
       }
