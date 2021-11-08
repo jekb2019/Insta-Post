@@ -83,10 +83,6 @@ const AuthForm = ({ type }) => {
     await resendConfirmationCode(username);
   };
 
-  const resetPassword = () => {
-    alert('Reset Password');
-  };
-
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       {type === 'signin' && (
@@ -96,7 +92,6 @@ const AuthForm = ({ type }) => {
           password={password}
           setPassword={setPassword}
           switchForm={switchForm}
-          resetPassword={resetPassword}
         />
       )}
       {type === 'signup' && (

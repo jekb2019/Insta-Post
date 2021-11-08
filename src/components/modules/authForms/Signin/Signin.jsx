@@ -9,7 +9,6 @@ const Signin = ({
   password,
   setPassword,
   switchForm,
-  resetPassword,
 }) => (
   <>
     <h2 className={styles.title}>Sign in to continue</h2>
@@ -48,13 +47,6 @@ const Signin = ({
         />
       </div>
     </div>
-    <p className={styles.password_forgot}>
-      Forgot your password?{' '}
-      <span className={styles.reset_link} onClick={resetPassword}>
-        Click here to reset
-      </span>
-      .
-    </p>
     <BasicButton
       color="white"
       backgroundColor="orange"
