@@ -3,13 +3,7 @@ import styles from '../authForms.module.css';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
 import { AuthFormTypes } from '../AuthForm';
 
-const Signin = ({
-  username,
-  setUsername,
-  password,
-  setPassword,
-  switchForm,
-}) => (
+const Signin = ({ username, password, switchForm }) => (
   <>
     <h2 className={styles.title}>Sign in to continue</h2>
     <p className={styles.description}>
@@ -30,8 +24,7 @@ const Signin = ({
           className={styles.input}
           type="text"
           name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          {...username}
         />
       </div>
       <div className={styles.input_group}>
@@ -42,8 +35,7 @@ const Signin = ({
           className={styles.input}
           type="password"
           name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          {...password}
         />
       </div>
     </div>

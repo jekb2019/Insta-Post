@@ -3,7 +3,7 @@ import styles from '../authForms.module.css';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
 import { AuthFormTypes } from '../AuthForm';
 
-const ConfirmSignup = ({ code, setCode, switchForm, resendCode }) => (
+const ConfirmSignup = ({ code, switchForm, resendCode }) => (
   <>
     <h2 className={styles.title}>Enter Confirmation Code</h2>
     <p className={styles.description}>
@@ -24,8 +24,7 @@ const ConfirmSignup = ({ code, setCode, switchForm, resendCode }) => (
           className={styles.input}
           type="text"
           name="confirmation"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
+          {...code}
         />
       </div>
     </div>

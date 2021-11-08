@@ -11,6 +11,7 @@ import {
   signIn,
   signUp,
 } from '../../../services/auth';
+import useInput from '../../../hooks/useInput';
 
 export const AuthFormTypes = {
   SIGNUP: 'signup',
@@ -19,10 +20,10 @@ export const AuthFormTypes = {
 };
 
 const AuthForm = ({ type }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
+  const username = useInput('');
+  const password = useInput('');
+  const email = useInput('');
+  const code = useInput('');
 
   const history = useHistory();
 
@@ -45,37 +46,29 @@ const AuthForm = ({ type }) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log('handle submit');
     e.preventDefault();
     switch (type) {
       case AuthFormTypes.SIGNIN:
-        console.log('Case: Signin');
-        const user = await signIn(username, password);
-        // console.log(user);
+        await signIn(username.value, password.value);
         return;
       case AuthFormTypes.SIGNUP:
-        let newUser;
         try {
-          newUser = await signUp(username, password, email);
-          console.log(newUser);
+          await signUp(username.value, password.value, email.value);
           history.push('/confirmation');
         } catch (err) {
           console.error(err);
         }
         return;
       case AuthFormTypes.CONFIRM_SIGNUP:
-        let confirmation;
         try {
-          confirmation = await confirmSignUp(username, code);
+          await confirmSignUp(username.value, code.value);
         } catch (e) {
           alert('Invalid code');
         }
-        console.log(confirmation);
         history.push('/signin');
-
         return;
       default:
-        return null;
+        throw new Error('Invalid Auth Action');
     }
   };
 
@@ -88,27 +81,21 @@ const AuthForm = ({ type }) => {
       {type === 'signin' && (
         <Signin
           username={username}
-          setUsername={setUsername}
           password={password}
-          setPassword={setPassword}
           switchForm={switchForm}
         />
       )}
       {type === 'signup' && (
         <Signup
           username={username}
-          setUsername={setUsername}
           password={password}
-          setPassword={setPassword}
           email={email}
-          setEmail={setEmail}
           switchForm={switchForm}
         />
       )}
       {type === 'confirm-signup' && (
         <ConfirmSignup
           code={code}
-          setCode={setCode}
           switchForm={switchForm}
           resendCode={resendCode}
         />

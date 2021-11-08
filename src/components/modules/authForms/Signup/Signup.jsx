@@ -3,15 +3,7 @@ import styles from '../authForms.module.css';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
 import { AuthFormTypes } from '../AuthForm';
 
-const Signup = ({
-  username,
-  setUsername,
-  password,
-  setPassword,
-  email,
-  setEmail,
-  switchForm,
-}) => (
+const Signup = ({ username, password, email, switchForm }) => (
   <>
     <h2 className={styles.title}>Create a new account</h2>
     <p className={styles.description}>
@@ -32,8 +24,7 @@ const Signup = ({
           className={styles.input}
           type="text"
           name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          {...username}
         />
       </div>
       <div className={styles.input_group}>
@@ -44,21 +35,14 @@ const Signup = ({
           className={styles.input}
           type="password"
           name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          {...password}
         />
       </div>
       <div className={styles.input_group}>
         <label className={styles.input_label} htmlFor="email">
           Email
         </label>
-        <input
-          className={styles.input}
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <input className={styles.input} type="email" name="email" {...email} />
       </div>
     </div>
     <BasicButton
