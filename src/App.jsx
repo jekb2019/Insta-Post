@@ -1,5 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Auth from './pages/auth/Auth';
 import Home from './pages/home/Home';
 import User from './pages/user/User';
@@ -22,6 +21,9 @@ const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
 const UploadPostModal = WithModal(UploadPost);
+
+// TODO: Refactor routing
+// TODO: What is the responsibility of App component?
 
 function App() {
   const [currentUser] = useContext(CurrentUserContext);

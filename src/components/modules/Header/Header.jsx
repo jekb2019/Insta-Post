@@ -8,9 +8,9 @@ import ProfileNav from '../ProfileNav/ProfileNav';
 import useNav from '../../../hooks/useNav';
 import useHeader from '../../../hooks/useHeader';
 
-const Header = ({ name, username, profileImg, isSticky }) => {
+const Header = ({ username, profileImg, isSticky }) => {
   const [isNavOpen, toggleNav, navItemConfigs] = useNav(username);
-  const [redirectTOHome] = useHeader();
+  const [redirectToHome] = useHeader();
 
   return (
     <header className={`${styles.container} ${isSticky && styles.sticky}`}>
@@ -19,11 +19,11 @@ const Header = ({ name, username, profileImg, isSticky }) => {
           className={styles.logo}
           src={logo}
           alt="InstaPost logo"
-          onClick={redirectTOHome}
+          onClick={redirectToHome}
         />
         <SearchBar />
         <div className={styles.user} onClick={toggleNav}>
-          <p className={styles.name}>{name}</p>
+          <p className={styles.name}>{username}</p>
           <ProfileImg borderColor="gray" size="medium" image={profileImg} />
           {isNavOpen && (
             <div className={styles.nav_container}>

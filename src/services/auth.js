@@ -70,6 +70,7 @@ export async function signIn(username, password) {
     const user = await Auth.signIn(username, password);
     return user;
   } catch (err) {
+    console.error(err);
     return new Error(err);
   }
 }
@@ -81,6 +82,7 @@ export async function signOut() {
   try {
     await Auth.signOut();
   } catch (err) {
+    console.error(err);
     throw new Error(err);
   }
 }
@@ -95,6 +97,7 @@ export async function getCurrentAuthUser() {
     });
     return user;
   } catch (err) {
+    console.error(err);
     return null;
   }
 }
