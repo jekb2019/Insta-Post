@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './authForms.module.css';
 import ConfirmSignup from './ConfirmSignup/ConfirmSignup';
 import Signin from './Signin/Signin';
@@ -12,6 +12,7 @@ import {
   signUp,
 } from '../../../services/auth';
 import useInput from '../../../hooks/useInput';
+import useAuthRoute from '../../../hooks/useAuthRoute';
 
 export const AuthFormTypes = {
   SIGNUP: 'signup',
@@ -27,23 +28,7 @@ const AuthForm = ({ type }) => {
 
   const history = useHistory();
 
-  const switchForm = (formType) => {
-    console.log('Switch');
-    switch (formType) {
-      case AuthFormTypes.SIGNIN:
-        history.push('/signin');
-        return;
-      case AuthFormTypes.SIGNUP:
-        console.log('sigup');
-        history.push('/signup');
-        return;
-      case AuthFormTypes.CONFIRM_SIGNUP:
-        history.push('/confirmation');
-        return;
-      default:
-        return null;
-    }
-  };
+  const switchForm = useAuthRoute();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
