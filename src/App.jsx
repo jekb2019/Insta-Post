@@ -8,14 +8,9 @@ import { CurrentUserContext } from './contexts/Auth/AuthContext';
 import WithModal from './hoc/WithModal/WithModal';
 import UploadPost from './components/modules/modals/UploadPost/UploadPost';
 import { UploadPostModalContext } from './contexts/Modal/ModalContext';
-
-import Amplify from '@aws-amplify/core';
-import config from './aws-exports';
 import { AuthFormTypes } from './components/modules/authForms/AuthForm';
 import PublicRoute from './router/PublicRoute';
 import PrivateRoute from './router/PrivateRoute';
-
-Amplify.configure(config);
 
 const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
@@ -23,7 +18,7 @@ const UserWithHeader = WithHeader(User);
 const UploadPostModal = WithModal(UploadPost);
 
 // TODO: Refactor routing
-// TODO: What is the responsibility of App component?
+// TODO: What is the responsibility of App component? (Where should modal be?)
 
 function App() {
   const [currentUser] = useContext(CurrentUserContext);
@@ -31,7 +26,7 @@ function App() {
 
   return (
     <>
-      {/* {modalState.isOpen && <UploadPostModal />} */}
+      {modalState.isOpen && <UploadPostModal />}
       <Switch>
         <PrivateRoute
           component={<UserWithHeader currentUser={currentUser} />}
