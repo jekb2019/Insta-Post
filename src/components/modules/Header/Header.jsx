@@ -1,42 +1,16 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 import logo from '../../../assets/images/header_logo.png';
 import SearchBar from '../../elements/SearchBar/SearchBar';
 import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 import ProfileNav from '../ProfileNav/ProfileNav';
-import { useHistory } from 'react-router';
-import { signOut } from '../../../services/auth';
+import useNav from '../../../hooks/useNav';
+import useHeader from '../../../hooks/useHeader';
 
 const Header = ({ name, username, profileImg, isSticky }) => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
-  // -- 여기 route 관련 코드 있는게 좋은걸까? //
-  const history = useHistory();
-
-  const handleLogoClick = () => {
-    history.push('/home');
-  };
-
-  const navItemConfigs = useMemo(
-    () => [
-      {
-        label: 'My Page',
-        onClick: () => history.push(`/user/${username}`),
-      },
-      {
-        label: 'Log out',
-        onClick: () => {
-          signOut();
-        },
-      },
-    ],
-    [history]
-  );
+  const [isNavOpen, toggleNav, navItemConfigs] = useNav(username);
+  const [redirectTOHome] = useHeader();
 
   return (
     <header className={`${styles.container} ${isSticky && styles.sticky}`}>
@@ -45,7 +19,7 @@ const Header = ({ name, username, profileImg, isSticky }) => {
           className={styles.logo}
           src={logo}
           alt="InstaPost logo"
-          onClick={handleLogoClick}
+          onClick={redirectTOHome}
         />
         <SearchBar />
         <div className={styles.user} onClick={toggleNav}>

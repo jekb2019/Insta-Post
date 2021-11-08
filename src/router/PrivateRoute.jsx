@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { isLoggedIn } from '../utils/helper';
 
 // const loggedIn = isLoggedIn();
 
