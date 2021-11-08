@@ -1,8 +1,10 @@
 /**
- * Potential Usage:
- *  - auth related jobs
- *  - Checking if user is logged in
- *  - Getting current logged in user data
+ * Directly communicate with Amplify Auth for
+ *  - current logged in user
+ *  - signup
+ *  - signin
+ *  - signout
+ *  - signin confirmations
  */
 
 import { Auth } from 'aws-amplify';
@@ -24,7 +26,7 @@ export async function signUp(username, password, email) {
     });
     console.log(user);
   } catch (err) {
-    throw new Error('error signing up: ', err);
+    throw new Error(err);
   }
 }
 
@@ -64,12 +66,11 @@ export async function resendConfirmationCode(username) {
  * @returns
  */
 export async function signIn(username, password) {
-  console.log('Sign in from service');
   try {
     const user = await Auth.signIn(username, password);
     return user;
   } catch (err) {
-    return new Error('Error signing in: ', err);
+    return new Error(err);
   }
 }
 
@@ -79,15 +80,14 @@ export async function signIn(username, password) {
 export async function signOut() {
   try {
     await Auth.signOut();
-  } catch (error) {
-    console.log('error signing out: ', error);
+  } catch (err) {
+    throw new Error(err);
   }
 }
 
 /**
  * Retreive Current user
  */
-
 export async function getCurrentAuthUser() {
   try {
     const user = await Auth.currentAuthenticatedUser({
