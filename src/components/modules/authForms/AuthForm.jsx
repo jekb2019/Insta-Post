@@ -4,15 +4,9 @@ import ConfirmSignup from './ConfirmSignup/ConfirmSignup';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import {
-  confirmSignUp,
-  resendConfirmationCode,
-  signIn,
-  signUp,
-} from '../../../services/auth';
 import useInput from '../../../hooks/useInput';
 import useAuthRoute from '../../../hooks/useAuthRoute';
+import useAuthFormSubmit from '../../../hooks/useAuthFormSubmit';
 
 export const AuthFormTypes = {
   SIGNUP: 'signup',
@@ -26,40 +20,14 @@ const AuthForm = ({ type }) => {
   const email = useInput('');
   const code = useInput('');
 
-  const history = useHistory();
-
   const switchForm = useAuthRoute();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    switch (type) {
-      case AuthFormTypes.SIGNIN:
-        await signIn(username.value, password.value);
-        return;
-      case AuthFormTypes.SIGNUP:
-        try {
-          await signUp(username.value, password.value, email.value);
-          history.push('/confirmation');
-        } catch (err) {
-          console.error(err);
-        }
-        return;
-      case AuthFormTypes.CONFIRM_SIGNUP:
-        try {
-          await confirmSignUp(username.value, code.value);
-        } catch (e) {
-          alert('Invalid code');
-        }
-        history.push('/signin');
-        return;
-      default:
-        throw new Error('Invalid Auth Action');
-    }
-  };
-
-  const resendCode = async () => {
-    await resendConfirmationCode(username);
-  };
+  const [handleSubmit, resendCode] = useAuthFormSubmit(
+    type,
+    username,
+    password,
+    email,
+    code
+  );
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

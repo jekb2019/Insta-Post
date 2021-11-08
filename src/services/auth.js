@@ -40,6 +40,7 @@ export async function confirmSignUp(username, code) {
     await Auth.confirmSignUp(username, code);
   } catch (err) {
     console.error(err);
+    throw new Error(err);
   }
 }
 
