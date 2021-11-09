@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Auth.module.css';
 import logo from '../../assets/images/header_logo.png';
 import AuthForm from '../../components/modules/authForms/AuthForm';

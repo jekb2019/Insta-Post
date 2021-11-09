@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import useFriendList from '../../../hooks/useFriendList';
+import LoadingSpinner from '../../elements/LoadingSpinner/LoadingSpinner';
 import MiniProfile from '../MiniProfile/MiniProfile';
 import styles from './FriendList.module.css';
 
@@ -20,6 +21,7 @@ const FriendList = (props) => {
         placeholder="search friends"
       />
       <ul className={styles.list}>
+        {users.length === 0 && <LoadingSpinner />}
         {users.map((user) => {
           const { username, profileImg } = user;
           return (

@@ -32,7 +32,7 @@ function useNav(username) {
         },
       },
     ],
-    [history]
+    [history, signOutFromService, username]
   );
 
   return [isNavOpen, toggleNav, navItemConfigs];

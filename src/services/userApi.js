@@ -1,0 +1,16 @@
+import API from '@aws-amplify/api';
+import * as queries from '../graphql/queries';
+
+export async function listUsers() {
+  const usersData = await API.graphql({ query: queries.listUsers });
+  return usersData.data.listUsers.items.map((user) => {
+    const { id, username, name, profileImg, description } = user;
+    return {
+      id,
+      username,
+      name,
+      profileImg,
+      description,
+    };
+  });
+}

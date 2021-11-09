@@ -27,6 +27,8 @@
   padding: 0px;
   margin: 0px;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .list li {
