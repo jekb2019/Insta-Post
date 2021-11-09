@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { userList } from '../../../mock/userList';
+import useFriendList from '../../../hooks/useFriendList';
 import MiniProfile from '../MiniProfile/MiniProfile';
 import styles from './FriendList.module.css';
 
-const users = userList;
-
 const FriendList = (props) => {
   const history = useHistory();
+  const [users] = useFriendList();
 
   const handleFriendClick = (username) => {
     history.push(`/user/${username}`);
