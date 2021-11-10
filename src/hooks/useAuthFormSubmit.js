@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useHistory } from 'react-router';
 import { AuthFormTypes } from '../components/modules/authForms/AuthForm';
 import {
@@ -10,6 +11,7 @@ import { createUser } from '../services/userApi';
 
 const useAuthFormSubmit = (type, username, password, email, code) => {
   const history = useHistory();
+  const userSub = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,16 +21,21 @@ const useAuthFormSubmit = (type, username, password, email, code) => {
         return;
       case AuthFormTypes.SIGNUP:
         try {
-          await signUp(username.value, password.value, email.value);
+          const user = await signUp(
+            username.value,
+            password.value,
+            email.value
+          );
+          userSub.current = user.userSub;
           history.push('/confirmation');
         } catch (err) {
-          console.error(err);
+          alert('Sign in failed');
         }
         return;
       case AuthFormTypes.CONFIRM_SIGNUP:
         try {
           await confirmSignUp(username.value, code.value);
-          await createUser(username.value);
+          await createUser(userSub.current, username.value);
           history.push('/signin');
         } catch (e) {
           alert('Invalid code');

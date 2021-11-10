@@ -16,8 +16,23 @@ export async function listUsers() {
   });
 }
 
-export async function createUser(username) {
+/**
+ * Get user by id
+ */
+export async function getUserById(id) {
+  const user = await API.graphql({
+    query: queries.getUser,
+    variables: {
+      id,
+    },
+  });
+  console.log(id);
+}
+
+export async function createUser(id, username) {
+  console.log('Create: ', id, username);
   const newUserInput = {
+    id,
     username,
   };
   const newUser = await API.graphql({

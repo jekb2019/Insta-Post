@@ -5,7 +5,6 @@ import { listUsers } from '../services/userApi';
 const useFriendList = () => {
   const [users, setUsers] = useState([]);
   const [currentUser] = useContext(CurrentUserContext);
-  console.log(currentUser);
 
   useEffect(() => {
     getFriends().then(setUsers);
