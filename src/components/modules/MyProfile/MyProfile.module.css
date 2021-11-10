@@ -1,4 +1,5 @@
 @value makerGray from '../../../styles/colors.css';
+@value makerDarkGray from '../../../styles/colors.css';
 
 .container {
   width: 500px;
@@ -24,8 +25,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.user_profile_info {
+  font-size: 20px;
+  margin: 5px 0;
+  color: black;
 }
 
 .basic_input {
@@ -51,4 +58,10 @@
   padding: 10px;
   font-size: 18px;
   border: 1px solid makerGray;
+}
+
+.profile_description {
+  font-size: 18px;
+  margin-top: 10px;
+  color: makerDarkGray;
 }

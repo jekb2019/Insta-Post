@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProfileImg.module.css';
 import PropTypes from 'prop-types';
 import defaultProfileImg from '../../../assets/images/default_profile.png';
+
 const ProfileImg = ({ size, borderColor, image }) => {
   return (
     <div
