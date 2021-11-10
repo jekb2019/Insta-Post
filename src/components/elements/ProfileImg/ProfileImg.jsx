@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProfileImg.module.css';
 import PropTypes from 'prop-types';
-
+import defaultProfileImg from '../../../assets/images/default_profile.png';
 const ProfileImg = ({ size, borderColor, image }) => {
   return (
     <div
@@ -9,7 +9,11 @@ const ProfileImg = ({ size, borderColor, image }) => {
         styles[`border_${borderColor}`]
       }`}
     >
-      <img className={`${styles.img}`} src={image} alt="User profile" />
+      <img
+        className={`${styles.img}`}
+        src={image ?? defaultProfileImg}
+        alt="User profile"
+      />
     </div>
   );
 };
