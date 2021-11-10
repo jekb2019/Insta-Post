@@ -5,13 +5,11 @@ const useAuthRoute = () => {
   const history = useHistory();
 
   const switchForm = (formType) => {
-    console.log('Switch');
     switch (formType) {
       case AuthFormTypes.SIGNIN:
         history.push('/signin');
         return;
       case AuthFormTypes.SIGNUP:
-        console.log('sigup');
         history.push('/signup');
         return;
       case AuthFormTypes.CONFIRM_SIGNUP:

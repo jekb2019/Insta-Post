@@ -47,7 +47,7 @@ const useAuthFormSubmit = (type, username, password, email, code) => {
   };
 
   const resendCode = async () => {
-    await resendConfirmationCode(username);
+    await resendConfirmationCode(username.value);
   };
 
   return [handleSubmit, resendCode];

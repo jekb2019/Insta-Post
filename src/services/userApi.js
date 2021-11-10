@@ -26,18 +26,16 @@ export async function getUserById(id) {
       id,
     },
   });
-  console.log(id);
+  return user;
 }
 
 export async function createUser(id, username) {
-  console.log('Create: ', id, username);
   const newUserInput = {
     id,
     username,
   };
-  const newUser = await API.graphql({
+  await API.graphql({
     query: mutations.createUser,
     variables: { input: newUserInput },
   });
-  console.log(newUser);
 }
