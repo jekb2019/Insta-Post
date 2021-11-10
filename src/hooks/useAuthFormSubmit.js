@@ -6,6 +6,7 @@ import {
   signIn,
   signUp,
 } from '../services/auth';
+import { createUser } from '../services/userApi';
 
 const useAuthFormSubmit = (type, username, password, email, code) => {
   const history = useHistory();
@@ -27,6 +28,7 @@ const useAuthFormSubmit = (type, username, password, email, code) => {
       case AuthFormTypes.CONFIRM_SIGNUP:
         try {
           await confirmSignUp(username.value, code.value);
+          await createUser(username.value);
           history.push('/signin');
         } catch (e) {
           alert('Invalid code');
