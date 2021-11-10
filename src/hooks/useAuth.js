@@ -15,15 +15,18 @@ import {
 
 function useAuth() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
 
   useEffect(() => {
     Hub.listen('auth', listener);
   }, []);
 
   useEffect(() => {
-    getCurrentAuthUserInfo().then((currentUser) => {
-      setCurrentUser(currentUser);
-    });
+    getCurrentAuthUserInfo()
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      })
+      .then(() => setIsUserLoaded(true));
   }, []);
 
   function listener(data) {
@@ -112,6 +115,7 @@ function useAuth() {
 
   return [
     currentUser,
+    isUserLoaded,
     {
       getCurrentAuthUser,
       signOutFromService,

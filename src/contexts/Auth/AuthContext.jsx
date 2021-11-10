@@ -7,11 +7,10 @@ export const CurrentUserContext = createContext(null);
  * Aim: Pass current authenticated user info globally
  */
 const AuthContext = ({ children }) => {
-  const [currentUser, operations] = useAuth();
-
+  const [currentUser, isUserLoaded, operations] = useAuth();
   return (
     <CurrentUserContext.Provider value={[currentUser, operations]}>
-      {children}
+      {isUserLoaded && children}
     </CurrentUserContext.Provider>
   );
 };
