@@ -16,6 +16,23 @@ export async function listUsers() {
   });
 }
 
+export async function listUsersWithFilter(filter) {
+  const usersData = await API.graphql({
+    query: queries.listUsers,
+    variables: { filter },
+  });
+  return usersData.data.listUsers.items.map((user) => {
+    const { id, username, name, profileImg, description } = user;
+    return {
+      id,
+      username,
+      name,
+      profileImg,
+      description,
+    };
+  });
+}
+
 /**
  * Get user by id
  */

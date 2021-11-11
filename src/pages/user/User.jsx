@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import LoadingSpinner from '../../components/elements/LoadingSpinner/LoadingSpinner';
 import MyProfile from '../../components/modules/MyProfile/MyProfile';
 import PostList from '../../components/modules/PostList/PostList';
-import { CurrentUserContext } from '../../contexts/Auth/AuthContext';
 import posts from '../../mock/posts';
 import currentUser from '../../mock/user';
+import { listUsers, listUsersWithFilter } from '../../services/userApi';
 import styles from './User.module.css';
 
 // TODO: remove mock
@@ -12,25 +13,34 @@ const myPosts = posts.filter(
   (post) => post.authorUsername === currentUser.username
 );
 
-const User = () => {
+const User = ({ currentUser }) => {
+  const [user, setUser] = useState(null);
   const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
-
-  const [currentUser] = useContext(CurrentUserContext);
   const isOwner = currentUser.username === username;
 
-  console.log('is Owner? ', isOwner);
+  useEffect(() => {
+    listUsersWithFilter({
+      username: {
+        eq: username,
+      },
+    }).then((user) => setUser(user[0]));
+  }, []);
 
   return (
     <div className={styles.container}>
       <div className={styles.content_wrapper}>
         <div className={styles.profile}>
-          <MyProfile
-            username={username}
-            name="name"
-            description=""
-            image={null}
-            isOwner={isOwner}
-          />
+          {user ? (
+            <MyProfile
+              username={user.username}
+              name={user.name ?? user.username}
+              description=""
+              image={user.profileImg}
+              isOwner={isOwner}
+            />
+          ) : (
+            <LoadingSpinner />
+          )}
         </div>
         <div className={styles.posts}>
           <PostList posts={myPosts} />

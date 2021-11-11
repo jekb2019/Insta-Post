@@ -11,7 +11,7 @@ import styles from './Home.module.css';
 
 const postList = posts;
 
-const Home = (props) => {
+const Home = () => {
   const dispatch = useContext(UploadPostModalContext)[1];
 
   const handleCreateBtn = () => {

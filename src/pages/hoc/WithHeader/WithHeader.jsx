@@ -11,7 +11,7 @@ const WithHeader = (Page) => {
     return (
       <div className={styles.container}>
         <Header profileImg={profileImg} username={username} isSticky={true} />
-        <Page />
+        <Page currentUser={currentUser} />
       </div>
     );
   };
