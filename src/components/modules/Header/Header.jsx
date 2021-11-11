@@ -7,10 +7,18 @@ import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import useNav from '../../../hooks/useNav';
 import useHeader from '../../../hooks/useHeader';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { fetchProfileImgWithUsername } from '../../../services/userApi';
 
-const Header = ({ username, profileImg, isSticky }) => {
+const Header = ({ username, isSticky }) => {
   const [isNavOpen, toggleNav, navItemConfigs] = useNav(username);
   const [redirectToHome] = useHeader();
+  const [profileImg, setProfileImg] = useState(null);
+
+  useEffect(() => {
+    fetchProfileImgWithUsername(username).then((img) => setProfileImg(img));
+  }, []);
 
   return (
     <header className={`${styles.container} ${isSticky && styles.sticky}`}>

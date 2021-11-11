@@ -5,13 +5,8 @@ import MyProfile from '../../components/modules/MyProfile/MyProfile';
 import PostList from '../../components/modules/PostList/PostList';
 import posts from '../../mock/posts';
 import currentUser from '../../mock/user';
-import {
-  fetchProfileImg,
-  getUserByUsername,
-  listUsersWithFilter,
-} from '../../services/userApi';
+import { getUserByUsername } from '../../services/userApi';
 import styles from './User.module.css';
-import { Storage } from 'aws-amplify';
 import useFetchProfileImage from '../../hooks/useFetchProfileImage';
 
 // TODO: remove mock

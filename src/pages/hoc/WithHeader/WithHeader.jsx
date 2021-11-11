@@ -7,10 +7,10 @@ import styles from './WithHeader.module.css';
  */
 const WithHeader = (Page) => {
   return ({ currentUser }) => {
-    const { username, profileImg } = currentUser;
+    const { username } = currentUser;
     return (
       <div className={styles.container}>
-        <Header profileImg={profileImg} username={username} isSticky={true} />
+        <Header username={username} isSticky={true} />
         <Page currentUser={currentUser} />
       </div>
     );
