@@ -1,10 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import BasicButton from '../../elements/BasicButton/BasicButton';
 import ProfileImg from '../../elements/ProfileImg/ProfileImg';
 import styles from './MyProfile.module.css';
-import { Storage } from 'aws-amplify';
-import useInput from '../../../hooks/useInput';
-import { updateUser } from '../../../services/userApi';
 import useImagePreview from '../../../hooks/useImagePreview';
 import useUpdateUser from '../../../hooks/useUpdateUser';
 
@@ -15,29 +12,11 @@ const MyProfile = ({ userId, username, name, description, image, isOwner }) => {
     handleSave,
   ] = useUpdateUser(userId, username, name, description, uploadedImg);
 
-  // const nameInput = useInput(name);
-  // const usernameInput = useInput(username);
-  // const descriptionInput = useInput(description ?? '');
-
   const imgInputRef = useRef();
 
   const handleProfileImgClick = () => {
     imgInputRef.current.click();
   };
-
-  // const handleSave = async () => {
-  //   if (uploadedImg) {
-  //     await Storage.put(uploadedImg.name, uploadedImg);
-  //   }
-  //   await updateUser(
-  //     userId,
-  //     usernameInput.value,
-  //     nameInput.value,
-  //     descriptionInput.value,
-  //     uploadedImg ? uploadedImg.name : null
-  //   );
-  //   alert('Update Done!');
-  // };
 
   return (
     <div className={styles.container}>

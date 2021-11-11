@@ -1,13 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../../components/elements/LoadingSpinner/LoadingSpinner';
 import MyProfile from '../../components/modules/MyProfile/MyProfile';
 import PostList from '../../components/modules/PostList/PostList';
 import posts from '../../mock/posts';
 import currentUser from '../../mock/user';
-import { listUsers, listUsersWithFilter } from '../../services/userApi';
+import {
+  fetchProfileImg,
+  getUserByUsername,
+  listUsersWithFilter,
+} from '../../services/userApi';
 import styles from './User.module.css';
 import { Storage } from 'aws-amplify';
+import useFetchProfileImage from '../../hooks/useFetchProfileImage';
 
 // TODO: remove mock
 const myPosts = posts.filter(
@@ -15,35 +20,26 @@ const myPosts = posts.filter(
 );
 
 const User = ({ currentUser }) => {
-  const [user, setUser] = useState(null);
-  const [fetchedProfileImg, setFetchedProfileImg] = useState(null);
-  const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
   const isOwner = currentUser.username === username;
+  const [user, setUser] = useState(null);
+
+  const [
+    fetchedProfileImg,
+    fetchProfileImgFromStorage,
+  ] = useFetchProfileImage();
+
+  const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
 
   useEffect(() => {
-    listUsersWithFilter({
-      username: {
-        eq: username,
-      },
-    }).then((user) => setUser(user[0]));
+    getUserByUsername(username).then((user) => setUser(user[0]));
   }, []);
 
   useEffect(() => {
-    fetchProfileImgFromDB();
+    if (user) {
+      fetchProfileImgFromStorage(user.profileImg);
+    }
   }, [user]);
 
-  async function fetchProfileImgFromDB() {
-    if (user && user.profileImg) {
-      let imageFromDB;
-      try {
-        imageFromDB = await Storage.get(user.profileImg);
-      } catch (err) {
-        console.log(err);
-      }
-      setFetchedProfileImg(imageFromDB);
-      console.log(imageFromDB);
-    }
-  }
   return (
     <div className={styles.container}>
       <div className={styles.content_wrapper}>

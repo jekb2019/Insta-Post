@@ -1,6 +1,7 @@
 import API from '@aws-amplify/api';
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
+import Storage from '@aws-amplify/storage';
 
 export async function listUsers() {
   const usersData = await API.graphql({ query: queries.listUsers });
@@ -33,14 +34,20 @@ export async function listUsersWithFilter(filter) {
   });
 }
 
-/**
- * Get user by id
- */
 export async function getUserById(id) {
   const user = await API.graphql({
     query: queries.getUser,
     variables: {
       id,
+    },
+  });
+  return user;
+}
+
+export async function getUserByUsername(username) {
+  const user = await listUsersWithFilter({
+    username: {
+      eq: username,
     },
   });
   return user;
@@ -71,4 +78,27 @@ export async function updateUser(id, username, name, description, profileImg) {
     query: mutations.updateUser,
     variables: { input: userDetails },
   });
+}
+
+export async function fetchProfileImg(imageName) {
+  let imageFromDB = await Storage.get(imageName);
+  return imageFromDB;
+}
+
+export async function fetchProfileImgWithUsername(username) {
+  const [user] = await listUsersWithFilter({
+    username: {
+      eq: username,
+    },
+  });
+
+  if (!user) {
+    throw new Error('user does not exist');
+  }
+
+  if (!user.profileImg) {
+    return null;
+  }
+  const img = await fetchProfileImg(user.profileImg);
+  return img;
 }
