@@ -12,9 +12,6 @@ import PrivateRouteWithModal from './router/PrivateRouteWithModal';
 const HomeWithHeader = WithHeader(Home);
 const UserWithHeader = WithHeader(User);
 
-// TODO: Refactor routing
-// TODO: What is the responsibility of App component? (Where should modal be?)
-
 function App() {
   const [currentUser] = useContext(CurrentUserContext);
   return (

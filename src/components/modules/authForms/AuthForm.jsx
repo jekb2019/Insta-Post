@@ -21,6 +21,7 @@ const AuthForm = ({ type }) => {
   const code = useInput('');
 
   const switchForm = useAuthRoute();
+
   const [handleSubmit, resendCode] = useAuthFormSubmit(
     type,
     username,

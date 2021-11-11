@@ -44,7 +44,6 @@ const User = ({ currentUser }) => {
       console.log(imageFromDB);
     }
   }
-
   return (
     <div className={styles.container}>
       <div className={styles.content_wrapper}>

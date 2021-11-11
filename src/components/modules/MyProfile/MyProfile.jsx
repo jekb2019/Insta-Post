@@ -5,13 +5,19 @@ import styles from './MyProfile.module.css';
 import { Storage } from 'aws-amplify';
 import useInput from '../../../hooks/useInput';
 import { updateUser } from '../../../services/userApi';
+import useImagePreview from '../../../hooks/useImagePreview';
+import useUpdateUser from '../../../hooks/useUpdateUser';
 
 const MyProfile = ({ userId, username, name, description, image, isOwner }) => {
-  console.log(userId, username, name, description, image, isOwner);
-  const [uploadedImg, setUploadedImg] = useState(null);
-  const nameInput = useInput(name);
-  const usernameInput = useInput(username);
-  const descriptionInput = useInput(description ?? '');
+  const [uploadedImg, handleFileChange] = useImagePreview(null);
+  const [
+    { nameInput, usernameInput, descriptionInput },
+    handleSave,
+  ] = useUpdateUser(userId, username, name, description, uploadedImg);
+
+  // const nameInput = useInput(name);
+  // const usernameInput = useInput(username);
+  // const descriptionInput = useInput(description ?? '');
 
   const imgInputRef = useRef();
 
@@ -19,28 +25,19 @@ const MyProfile = ({ userId, username, name, description, image, isOwner }) => {
     imgInputRef.current.click();
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) {
-      return;
-    }
-    setUploadedImg(file);
-    console.log(file);
-  };
-
-  const handleSave = async () => {
-    if (uploadedImg) {
-      await Storage.put(uploadedImg.name, uploadedImg);
-    }
-    await updateUser(
-      userId,
-      usernameInput.value,
-      nameInput.value,
-      descriptionInput.value,
-      uploadedImg ? uploadedImg.name : null
-    );
-    alert('Update Done!');
-  };
+  // const handleSave = async () => {
+  //   if (uploadedImg) {
+  //     await Storage.put(uploadedImg.name, uploadedImg);
+  //   }
+  //   await updateUser(
+  //     userId,
+  //     usernameInput.value,
+  //     nameInput.value,
+  //     descriptionInput.value,
+  //     uploadedImg ? uploadedImg.name : null
+  //   );
+  //   alert('Update Done!');
+  // };
 
   return (
     <div className={styles.container}>
@@ -81,6 +78,7 @@ const MyProfile = ({ userId, username, name, description, image, isOwner }) => {
                 type="text"
                 className={styles.basic_input}
                 placeholder={`${username}`}
+                readOnly
                 {...usernameInput}
               />
             </>
