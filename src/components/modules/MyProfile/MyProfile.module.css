@@ -21,6 +21,15 @@
   justify-content: space-between;
 }
 
+.profile_img_btn {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.img_input {
+  display: none;
+}
+
 .upper_right {
   height: 100%;
   display: flex;
