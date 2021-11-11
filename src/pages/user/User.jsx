@@ -7,6 +7,7 @@ import posts from '../../mock/posts';
 import currentUser from '../../mock/user';
 import { listUsers, listUsersWithFilter } from '../../services/userApi';
 import styles from './User.module.css';
+import { Storage } from 'aws-amplify';
 
 // TODO: remove mock
 const myPosts = posts.filter(
@@ -15,6 +16,7 @@ const myPosts = posts.filter(
 
 const User = ({ currentUser }) => {
   const [user, setUser] = useState(null);
+  const [fetchedProfileImg, setFetchedProfileImg] = useState(null);
   const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
   const isOwner = currentUser.username === username;
 
@@ -26,16 +28,34 @@ const User = ({ currentUser }) => {
     }).then((user) => setUser(user[0]));
   }, []);
 
+  useEffect(() => {
+    fetchProfileImgFromDB();
+  }, [user]);
+
+  async function fetchProfileImgFromDB() {
+    if (user && user.profileImg) {
+      let imageFromDB;
+      try {
+        imageFromDB = await Storage.get(user.profileImg);
+      } catch (err) {
+        console.log(err);
+      }
+      setFetchedProfileImg(imageFromDB);
+      console.log(imageFromDB);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.content_wrapper}>
         <div className={styles.profile}>
           {user ? (
             <MyProfile
+              userId={user.id}
               username={user.username}
               name={user.name ?? user.username}
-              description=""
-              image={user.profileImg}
+              description={user.description}
+              image={fetchedProfileImg}
               isOwner={isOwner}
             />
           ) : (

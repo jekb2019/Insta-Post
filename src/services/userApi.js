@@ -56,3 +56,19 @@ export async function createUser(id, username) {
     variables: { input: newUserInput },
   });
 }
+
+export async function updateUser(id, username, name, description, profileImg) {
+  const userDetails = {
+    id,
+    username,
+    name,
+    description,
+    profileImg,
+  };
+
+  console.log(userDetails);
+  await API.graphql({
+    query: mutations.updateUser,
+    variables: { input: userDetails },
+  });
+}
