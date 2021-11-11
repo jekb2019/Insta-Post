@@ -29,7 +29,7 @@ const Post = ({
         <MiniProfile
           username={authorUsername}
           location={location}
-          image={profileImg}
+          image={null}
         />
         {isOwner && (
           <div className={styles.buttons}>
