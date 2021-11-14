@@ -14,6 +14,16 @@ const MyProfile = ({ userId, username, name, description, image, isOwner }) => {
 
   const imgInputRef = useRef();
 
+  const handleSaveBtnClick = async () => {
+    try {
+      await handleSave();
+    } catch (err) {
+      alert('Error Saving!');
+    }
+
+    alert('Profile successfully updated');
+  };
+
   const handleProfileImgClick = () => {
     imgInputRef.current.click();
   };

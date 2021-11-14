@@ -70,7 +70,7 @@ export async function updateUser(id, username, name, description, profileImg) {
     username,
     name,
     description,
-    profileImg,
+    ...(profileImg && { profileImg }),
   };
 
   console.log(userDetails);
