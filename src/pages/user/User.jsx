@@ -15,6 +15,7 @@ const myPosts = posts.filter(
 );
 
 const User = ({ currentUser }) => {
+  const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
   const isOwner = currentUser.username === username;
   const [user, setUser] = useState(null);
 
@@ -22,8 +23,6 @@ const User = ({ currentUser }) => {
     fetchedProfileImg,
     fetchProfileImgFromStorage,
   ] = useFetchProfileImage();
-
-  const { username } = useParams(); // not good as the placeholder can change if user enters weird url slug
 
   useEffect(() => {
     getUserByUsername(username).then((user) => setUser(user[0]));

@@ -1,4 +1,5 @@
 import Storage from '@aws-amplify/storage';
+import { PROFILE_IMG_DIR_PREFIX } from '../config/db_directory_config';
 import { updateUser } from '../services/userApi';
 import useInput from './useInput';
 
@@ -9,7 +10,10 @@ const useUpdateUser = (userId, username, name, description, uploadedImg) => {
 
   const handleSaveImgToStorage = async () => {
     if (uploadedImg) {
-      await Storage.put(uploadedImg.name, uploadedImg);
+      await Storage.put(
+        `${PROFILE_IMG_DIR_PREFIX}${uploadedImg.name}`,
+        uploadedImg
+      );
     }
   };
 
@@ -19,7 +23,7 @@ const useUpdateUser = (userId, username, name, description, uploadedImg) => {
       usernameInput.value,
       nameInput.value,
       descriptionInput.value,
-      uploadedImg ? uploadedImg.name : null
+      uploadedImg ? `${PROFILE_IMG_DIR_PREFIX}${uploadedImg.name}` : null
     );
   };
 
