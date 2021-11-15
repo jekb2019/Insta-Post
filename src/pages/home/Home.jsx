@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AddNewButton from '../../components/elements/AddNewButton/AddNewButton';
 import FriendList from '../../components/modules/FriendList/FriendList';
 import PostList from '../../components/modules/PostList/PostList';
@@ -7,12 +7,17 @@ import {
   UploadPostModalContext,
 } from '../../contexts/Modal/ModalContext';
 import posts from '../../mock/posts';
+import { listPosts } from '../../services/postApi';
 import styles from './Home.module.css';
 
 const postList = posts;
 
 const Home = () => {
   const dispatch = useContext(UploadPostModalContext)[1];
+
+  useEffect(() => {
+    listPosts().then(console.log);
+  }, []);
 
   const handleCreateBtn = () => {
     dispatch({ type: ACTIONS.OPEN_CREATE_MODAL });

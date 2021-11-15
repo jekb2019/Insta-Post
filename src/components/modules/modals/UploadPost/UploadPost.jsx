@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import currentUser from '../../../../mock/user';
 import BasicButton from '../../../elements/BasicButton/BasicButton';
 import MiniProfile from '../../MiniProfile/MiniProfile';
 import styles from './UploadPost.module.css';
@@ -9,25 +8,19 @@ import {
   UploadPostModalContext,
 } from '../../../../contexts/Modal/ModalContext';
 
-const { username, profileImg } = currentUser;
-
 const UploadPost = () => {
   const [modalState, dispatch] = useContext(UploadPostModalContext);
+
   const closeModal = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
-  console.log(modalState);
 
   return (
     <div className={styles.container}>
       <div className={styles.upper}>
         <div className={styles.left}>
           <div className={styles.upper_left_top}>
-            <MiniProfile
-              username={username}
-              location="Auckland"
-              image={profileImg}
-            />
+            <MiniProfile username={''} location="Auckland" image={''} />
             <BasicButton
               size="small"
               backgroundColor="orange"

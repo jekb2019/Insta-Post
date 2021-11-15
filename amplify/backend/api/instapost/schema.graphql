@@ -13,7 +13,7 @@ type Post @model {
   id: ID!
   image: String!
   description: String!
-  user: User @connection(name: "UserPost")
+  user: User! @connection(name: "UserPost")
   comments: [Comment] @connection(name: "PostComment")
   likes: [Like] @connection(name: "PostLike")
 }
@@ -21,12 +21,12 @@ type Post @model {
 type Comment @model {
   id: ID!
   description: String!
-  user: User @connection(name: "UserComment")
-  post: Post @connection(name: "PostComment")
+  user: User! @connection(name: "UserComment")
+  post: Post! @connection(name: "PostComment")
 }
 
 type Like @model {
   id: ID!
-  user: User @connection(name: "UserLike")
-  post: Post @connection(name: "PostLike")
+  user: User! @connection(name: "UserLike")
+  post: Post! @connection(name: "PostLike")
 }
