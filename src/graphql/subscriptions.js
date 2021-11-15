@@ -14,6 +14,7 @@ export const onCreateUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -54,6 +55,7 @@ export const onUpdateUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -94,6 +96,7 @@ export const onDeleteUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -162,6 +165,7 @@ export const onCreatePost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -208,6 +212,7 @@ export const onUpdatePost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -254,6 +259,7 @@ export const onDeletePost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -301,6 +307,7 @@ export const onCreateComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -351,6 +358,7 @@ export const onUpdateComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -401,6 +409,7 @@ export const onDeleteComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -450,6 +459,7 @@ export const onCreateLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -499,6 +509,7 @@ export const onUpdateLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -548,6 +559,7 @@ export const onDeleteLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }

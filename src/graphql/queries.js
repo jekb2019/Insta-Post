@@ -14,6 +14,7 @@ export const getUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -111,6 +112,7 @@ export const getPost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -142,6 +144,7 @@ export const listPosts = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -191,6 +194,7 @@ export const getComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -222,6 +226,7 @@ export const listComments = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -273,6 +278,7 @@ export const getLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -303,6 +309,7 @@ export const listLikes = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }

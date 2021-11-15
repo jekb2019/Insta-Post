@@ -17,6 +17,7 @@ export const createUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -60,6 +61,7 @@ export const updateUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -103,6 +105,7 @@ export const deleteUser = /* GraphQL */ `
           id
           image
           description
+          location
           createdAt
           updatedAt
         }
@@ -174,6 +177,7 @@ export const createPost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -223,6 +227,7 @@ export const updatePost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -272,6 +277,7 @@ export const deletePost = /* GraphQL */ `
         }
         nextToken
       }
+      location
       createdAt
       updatedAt
     }
@@ -322,6 +328,7 @@ export const createComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -375,6 +382,7 @@ export const updateComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -428,6 +436,7 @@ export const deleteComment = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -480,6 +489,7 @@ export const createLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -532,6 +542,7 @@ export const updateLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }
@@ -584,6 +595,7 @@ export const deleteLike = /* GraphQL */ `
         likes {
           nextToken
         }
+        location
         createdAt
         updatedAt
       }

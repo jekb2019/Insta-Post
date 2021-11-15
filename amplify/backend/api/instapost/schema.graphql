@@ -16,6 +16,7 @@ type Post @model {
   user: User! @connection(name: "UserPost")
   comments: [Comment] @connection(name: "PostComment")
   likes: [Like] @connection(name: "PostLike")
+  location: String
 }
 
 type Comment @model {

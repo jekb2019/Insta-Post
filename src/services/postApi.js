@@ -20,3 +20,17 @@ export async function listPosts() {
     };
   });
 }
+
+export async function createPost(description, image, userId, location) {
+  const newPostInput = {
+    description,
+    image,
+    postUserId: userId,
+    location,
+  };
+
+  await API.graphql({
+    query: mutations.createPost,
+    variables: { input: newPostInput },
+  });
+}
