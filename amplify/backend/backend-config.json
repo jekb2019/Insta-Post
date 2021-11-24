@@ -35,8 +35,9 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": "instapost"
+              "apiKeyExpirationDays": 60,
+              "apiKeyExpirationDate": "2022-01-23T09:34:33.144Z",
+              "description": "instapostKey"
             }
           },
           "additionalAuthenticationProviders": []

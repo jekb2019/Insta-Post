@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 60,
+      "apiKeyExpirationDate": "2022-01-23T09:34:33.144Z",
+      "keyDescription": "instapostKey"
+    },
+    "conflictResolution": {},
+    "apiName": "instapost",
+    "gqlSchemaPath": "/Users/jason_ko/Documents/Coding/My_Works/insta-post/amplify/backend/api/instapost/schema.graphql",
+    "additionalAuthTypes": []
+  }
+}
